@@ -75,18 +75,18 @@
 }
 
 function validate(form,e){
-			console.log(form)
-			console.log(form.Email)
-    	fail="";
+    	var fail="";
+      var alertBox = document.querySelector('.alert')
     	if(form.Email.value =="" || form.Password.value ==""){
-    		fail+="Please fill the empty fields";
+    		fail="Please fill the empty fields";
     	}
     	if(fail==""){
     		return true;
     	}
     	else{
-    		document.querySelector('.alert').style.display = 'block';
-            setTimeout(function(){document.querySelector('.alert').style.display = 'none';},5000)
+        alertBox.querySelector('span').innerText = fail
+    		alertBox.style.display = 'block';
+            setTimeout(function(){alertBox.style.display = 'none';},5000)
             e.preventDefault()
     	}
     }
@@ -179,7 +179,8 @@ function validate(form,e){
   </div>
 </form> 
 <div class="alert alert-warning" role="alert">
-    <i class="fas fa-exclamation-triangle"></i> Please fill the empty fields!
+    <i class="fas fa-exclamation-triangle"></i> 
+    <span></span>
 </div>
 </div>
 </body>
