@@ -4,5 +4,9 @@
  The visitor can buy gear he wants for hiking or can get a fully-planned trip.
 
  It's a web development course project - MIU 
- Tools used: VsCode, Github, PhotoShop
- Language used: PHP, Javascript, HTML, CSS
+
+## Tools used: 
+VsCode, Github, PhotoShop
+
+ ## Language used: 
+ PHP, Javascript, HTML, CSS
