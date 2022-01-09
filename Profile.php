@@ -16,6 +16,8 @@
 
         $conn = new mysqli($servername, $username, $password, $dbname);
 
+		
+
 	$sql = "SELECT * FROM person WHERE ID_Person='".$_SESSION['ID_Person']."'";
 		$result = mysqli_query ($conn ,$sql);
 
@@ -24,7 +26,7 @@
 	?>
 <div class='container my-5 row col-10 col-sm-8 col-lg-7 m-auto rounded py-5 shadow'>
 	<div class="imgContainer m-auto col-4">
-		<img src="images/avatar.png" alt="Avatar" class="avatar">
+		<img src="<?php echo $data['Profile_Picture']?>" alt="Avatar" class="avatar">
 		<div class="editIcon">
 			<a href="editProfile.php">
 				<i class="fas fa-pen"></i>
