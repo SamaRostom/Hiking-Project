@@ -86,7 +86,7 @@ function validate(form,e){
     	}
     	else{
     		document.querySelector('.alert').style.display = 'block';
-            setTimeout(function(){document.querySelector('.alert').style.display = 'none';},3000)
+            setTimeout(function(){document.querySelector('.alert').style.display = 'none';},5000)
             e.preventDefault()
     	}
     }
@@ -116,9 +116,7 @@ function validate(form,e){
 }
 
 ?>
-<div class="alert alert-warning" role="alert">
-        <i class="fas fa-exclamation-triangle"></i> Please fill the empty fields!
-      </div>
+
     <div class='col-10 col-md-7 col-lg-6 col-xl-5 m-auto form-container px-5 py-4 my-5'>
         <h1 class='display-6 text-center'>Sign Up</h1>
    <form action="SignUp.php" method="post" onsubmit="validate(this,event)">
@@ -180,6 +178,9 @@ function validate(form,e){
    <p>Already have an account? <a class='linkClick' href="Login.php"> Login </a></p>
   </div>
 </form> 
+<div class="alert alert-warning" role="alert">
+    <i class="fas fa-exclamation-triangle"></i> Please fill the empty fields!
+</div>
 </div>
 </body>
 </html>
