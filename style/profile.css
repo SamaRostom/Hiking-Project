@@ -1,0 +1,36 @@
+body{
+    background-image: url("../images/profile.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.imgContainer{
+    width: fit-content;
+    position: relative;
+}
+.avatar{
+    border-radius: 100%;
+    border: 15px solid white;
+    box-shadow: 0px 0px 15px #d4d4d4;
+    width: 230px;
+    height: 230px;
+}
+
+.editIcon{
+    background-color: #5699b4;
+    width: fit-content;
+    padding: .5rem .7rem;
+    border-radius: 100%;
+    position: absolute;
+    top: 25px;
+    right: 20px;
+}
+.fas{
+    color: #5699b4;
+    margin-right: .5rem;
+}
+.editIcon i{color:white; font-size: 1rem; margin:0;}
+
+.container{
+    background-color: #ffffffad;
+}
