@@ -65,8 +65,8 @@ function validate(form,e){
 
 
     if(isset($_POST['Submit'])){
-
-    $sql="INSERT into person(Username,Email,Password,ID_Type,City,Gender,Phone_Number, Emergency_Number) values ('".$_POST['Username']."','".$_POST["Email"]."','".$_POST["Password"]."','"."2"."','".$_POST["City"]."','".$_POST["Gender"]."','".$_POST["Phone_Number"]."','".$_POST["Emergency_Number"]."')";
+    $image= "images/avatar.png";
+    $sql="INSERT into person(Username,Email,Password,ID_Type,City,Gender,Phone_Number, Emergency_Number,Profile_Picture) values ('".$_POST['Username']."','".$_POST["Email"]."','".$_POST["Password"]."','"."2"."','".$_POST["City"]."','".$_POST["Gender"]."','".$_POST["Phone_Number"]."','".$_POST["Emergency_Number"]."','".$image."')";
 
     if($conn->query($sql) === TRUE){
       echo '<script> alert("Signed up successfully");</script>';
