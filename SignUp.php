@@ -5,48 +5,7 @@
     <!-- <link rel='stylesheet' href='bootstrap.min.css'> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <style>
-      body{
-          background-image: url("Images/signUp.jpg");
-          background-size: cover;
-          background-repeat: no-repeat;
-      }
-        input[type="number"]{
-        width:48% !important 
-    }
-    input[name="Emergency Number"]{
-        margin-left: 0.5rem;
-    }
-
-      @media (max-width: 580px) {
-        input[type="number"]{
-        width:100% !important 
-    }
-    input[name="Emergency Number"]{
-        margin-left: 0rem;
-    }
-      }
-    
-    .linkClick{
-        text-decoration: none;
-    }
-
-    .alert{
-        display: none;
-    }
-
-    .form-container{
-        background-color: rgba(255, 255, 255, 0.774);
-    }
-
-    .showBtn{
-        right:15px;
-        top:8px;
-        color: grey;
-        cursor: pointer;
-        z-index: 99999;
-    }
-  </style>
+    <link rel="stylesheet" href="style/login.css">
 
   <script>
     //   var shown = false;
@@ -75,18 +34,18 @@
 }
 
 function validate(form,e){
-			console.log(form)
-			console.log(form.Email)
-    	fail="";
+    	var fail="";
+      var alertBox = document.querySelector('.alert')
     	if(form.Email.value =="" || form.Password.value ==""){
-    		fail+="Please fill the empty fields";
+    		fail="Please fill the empty fields";
     	}
     	if(fail==""){
     		return true;
     	}
     	else{
-    		document.querySelector('.alert').style.display = 'block';
-            setTimeout(function(){document.querySelector('.alert').style.display = 'none';},5000)
+        alertBox.querySelector('span').innerText = fail
+    		alertBox.style.display = 'block';
+            setTimeout(function(){alertBox.style.display = 'none';},5000)
             e.preventDefault()
     	}
     }
@@ -106,8 +65,8 @@ function validate(form,e){
 
 
     if(isset($_POST['Submit'])){
-
-    $sql="INSERT into person(Username,Email,Password,ID_Type,City,Gender,Phone_Number, Emergency_Number) values ('".$_POST['Username']."','".$_POST["Email"]."','".$_POST["Password"]."','"."2"."','".$_POST["City"]."','".$_POST["Gender"]."','".$_POST["Phone_Number"]."','".$_POST["Emergency_Number"]."')";
+    $image= "images/avatar.png";
+    $sql="INSERT into person(Username,Email,Password,ID_Type,City,Gender,Phone_Number, Emergency_Number,Profile_Picture) values ('".$_POST['Username']."','".$_POST["Email"]."','".$_POST["Password"]."','"."2"."','".$_POST["City"]."','".$_POST["Gender"]."','".$_POST["Phone_Number"]."','".$_POST["Emergency_Number"]."','".$image."')";
 
     if($conn->query($sql) === TRUE){
       echo '<script> alert("Signed up successfully");</script>';
@@ -133,7 +92,7 @@ function validate(form,e){
     <div class="input-group mb-3">
         <span class="input-group-text"><i class="fas fa-lock"></i></span>
         <input type="password" class="form-control" placeholder="Insert your password" name="Password">
-        <div class='position-absolute showBtn' onclick="ShowPassword()"><i class='far fa-eye'></i></div>
+        <div class='showBtn' onclick="ShowPassword()"><i class='far fa-eye'></i></div>
     </div>
 
 
@@ -179,7 +138,8 @@ function validate(form,e){
   </div>
 </form> 
 <div class="alert alert-warning" role="alert">
-    <i class="fas fa-exclamation-triangle"></i> Please fill the empty fields!
+    <i class="fas fa-exclamation-triangle"></i> 
+    <span></span>
 </div>
 </div>
 </body>

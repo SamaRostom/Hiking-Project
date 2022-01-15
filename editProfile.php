@@ -2,31 +2,10 @@
 <html>
 <head>
 	<title>Profile</title>
-	
-	<style>
-		.avatar {
-            vertical-align: middle;
-            width: 250px;
-            height: 250px;
-        }
-        .p{
-        	margin-left: 30px; 
-        	margin-top: 40px;
-        }
-        .p1{
-        	margin-left: 400px; 
-        	margin-top: -200px;
-        	font-size: 25px;
-        }
-	</style>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-<!-- <script>
-	var loadFile = function (event) {
-  	var image = document.getElementById("output");
-  	image.src = URL.createObjectURL(event.target.files[0]);
-};
-</script> -->
 
 	<?php
 	session_start();
@@ -39,17 +18,27 @@
 
 
 
-	    echo "<form action='' method='post'>";
+	    echo "<form action='' method='post' enctype='multipart/form-data'>";
+
+		
+
  	  	echo "Username: <input type= 'text'  name= 'Username'  value=".$_SESSION['Username']."><br>";
 		echo "Email: <input type= 'text'  name= 'Email' value=".$_SESSION['Email']."><br>";
 		echo "City: <input type= 'text'  name= 'City' value=".$_SESSION['City']."><br>";
 		echo "Gender: <input type= 'text'  name= 'Gender' value=".$_SESSION['Gender']."><br>";
-		echo "Phone_Number: <input type= 'text'  name= 'Phone_Number' value=".$_SESSION['Phone_Number']."><br>";
-		echo "Emergency_Number: <input type= 'text'  name= 'Emergency_Number' value=".$_SESSION['Emergency_Number']."><br>";
+		echo "Phone Number: <input type= 'text'  name= 'Phone_Number' value=".$_SESSION['Phone_Number']."><br>";
+		echo "Emergency Number: <input type= 'text'  name= 'Emergency_Number' value=".$_SESSION['Emergency_Number']."><br>";
+		echo "Profile Picture: <input type= 'file' name= 'Profile_Picture' id ='Profile_Picture'><br>";
 		echo "<input type= 'submit'  name= 'submit'  value= 'Submit' ><br>";
 		echo"</form>";
 
+
 		if(isset($_POST['submit'])){
+
+		$dir="images/";
+		$filename=$dir.basename($_FILES['Profile_Picture']['name']);
+		move_uploaded_file($_FILES['Profile_Picture']['tmp_name'], $filename);
+
 		$Username = $_POST['Username'];
 		$_SESSION['Username'] = $Username;
 		$Email = $_POST['Email'];
@@ -63,7 +52,9 @@
 		$Emergency_Number = $_POST['Emergency_Number'];
 		$_SESSION['Emergency_Number'] = $Emergency_Number;
 		$ID_Person = $_SESSION['ID_Person'];
-		$sql="UPDATE person SET Username = '$Username', Email ='$Email', City = '$City', Gender = '$Gender', Phone_Number = '$Phone_Number', Emergency_Number = '$Emergency_Number' WHERE ID_Person='".$_SESSION['ID_Person']."'";
+		
+
+		$sql="UPDATE person SET Username = '$Username', Email ='$Email', City = '$City', Gender = '$Gender', Phone_Number = '$Phone_Number', Emergency_Number = '$Emergency_Number', Profile_Picture = '$filename' WHERE ID_Person='".$_SESSION['ID_Person']."'";
 
 		$result=mysqli_query($conn,$sql);
 		if($result){
@@ -71,16 +62,5 @@
 		}
 	}	
 	?>
-
-<!-- <div class="profile-pic">
-    <label class="-label" for="file">
-       <span class="glyphicon glyphicon-camera"></span>
-       <span>Change Image</span>
-    </label>
-   <input id="file" type="file" onchange="loadFile(event)"/>
-   <img src="images/img_avatar.png" alt="Avatar" class="avatar">
-</div> -->
-	
-	
 </body>
 </html>

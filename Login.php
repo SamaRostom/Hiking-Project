@@ -4,30 +4,8 @@
 	<title>Login</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <style>
-      body{
-          background-image: url("Images/signUp.jpg");
-          background-size: cover;
-          background-repeat: no-repeat;
-      }
-      
-    
-    .linkClick{
-        text-decoration: none;
-    }
-
-    .form-container{
-        background-color: rgba(255, 255, 255, 0.774);
-    }
-
-    .showBtn{
-        right:15px;
-        top:8px;
-        color: grey;
-        cursor: pointer;
-        z-index: 99999;
-    }
-  </style>
+    <link rel="stylesheet" href="style/login.css">
+ 
 	<script>
 		function validate(form){
 			console.log(form)
@@ -95,7 +73,7 @@ if(isset($_POST['Submit'])){
 ?>
 <div class='col-10 col-md-7 col-lg-6 col-xl-5 m-auto form-container px-5 py-4 my-5'>
         <h1 class='display-6 text-center'>Log in</h1>
-		<p class='text-center'>Dive in advnetures with us</p>
+		<p class='text-center'>Dive in adventures with us</p>
 <form method="POST" action="" onsubmit="validate(this)">
     <div class="input-group mb-3">
         <span class="input-group-text"><i class="fas fa-at"></i></span>

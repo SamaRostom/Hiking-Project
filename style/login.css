@@ -1,0 +1,44 @@
+body{
+    background-image: url("../Images/signUp.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+  input[type="number"]{
+  width:48% !important 
+}
+input[name="Emergency Number"]{
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 580px) {
+  input[type="number"]{
+  width:100% !important 
+}
+input[name="Emergency Number"]{
+  margin-left: 0rem;
+}
+}
+
+.linkClick{
+  text-decoration: none;
+}
+
+.alert{
+  display: none;
+}
+
+.form-container{
+  background-color: rgba(255, 255, 255, 0.774);
+}
+
+.showBtn{
+position: absolute;
+  right:15px;
+  top:8px;
+  color: rgb(128, 128, 128);
+  cursor: pointer;
+  z-index: 99999;
+}
+input[name="Password"]{
+  border-radius: 0px .25rem .25rem 0px !important
+}
