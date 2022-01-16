@@ -185,7 +185,7 @@ section{
 	<center>
 	<h2>THE MOUNTAINS</h2>
 	<h3>ARE CALLING..AND I MUST GO</h3>
-<a href="#Login" id="link">Login</a>
+<a href="Login.php" id="link">Login</a>
 <div class="social-icons" id="social-icons">
 	<a href="#github"><i class="fab fa-github"></i></a>
 	<a href="#instagram"><i class="fab fa-instagram"></i></a>
