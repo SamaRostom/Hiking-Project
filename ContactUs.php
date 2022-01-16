@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<script> src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -32,9 +32,10 @@ body{
 
 </head>
 <body>
-	<?php
-       include "navbar.php";
-	?>
+<?php
+     include "navbar.php";
+  ?>
+	<
 <div class="m">
 <h3><strong>Contact Us</strong></h3>
 <form>
@@ -54,10 +55,10 @@ body{
 </div>
 
 </body>
-</html> -->
+</html>
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<script> src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -125,9 +126,7 @@ input[type=text]:focus, input[type=password]:focus {
 </style>
 </head>
 <body>
-	<?php
-	include "navbar.php";
-    ?>
+	
 
 <div class="bg-img">
   <form action="/action_page.php" class="container">
@@ -146,4 +145,4 @@ input[type=text]:focus, input[type=password]:focus {
 
 
 </body>
-</html>
+</html> -->
