@@ -139,7 +139,7 @@ input[type=text]:focus, input[type=password]:focus {
     <label for="psw"><b>Address</b></label>
     
 
-    <button type="submit" class="btn">Login</button>
+    
   </form>
 </div>
 
