@@ -8,6 +8,10 @@
 		</style>
 	</head>
 <body>
+  <?php
+   session_start();
+    $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+  ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
   <a class="navbar-brand" href="home.php">Logo</a>
@@ -31,12 +35,12 @@
 		<li class="nav-item">
           <a class="nav-link history" href="history.php">History</a>
         </li>
-		<li class="nav-item">
+		<!-- <li class="nav-item">
           <a class="nav-link equip" href="equipment.php">Equipment</a>
-        </li>
+        </li> -->
       </ul>
       <div class="d-flex">
-	  <a class="cart text-decoration-none me-3" href='cart.php'><i class="fas fa-shopping-cart"><span class="badge rounded-pill bg-danger">0</span></i></a>
+	  <a class="cart text-decoration-none me-3" href='cart.php'><i class="fas fa-shopping-cart"><span class="badge rounded-pill bg-danger"><?php echo $num_items_in_cart; ?></span></i></a>
 	  <a class="profile text-decoration-none me-3" href='profile.php'><i class="fas fa-user-alt"></i></a>
 		<a class="text-decoration-none signup me-3" href='signup.php'>Sign up</a>
 		<span class='seperator me-3'>|</span>
@@ -48,8 +52,9 @@
 </nav>
 
 <?php
-session_start();
+
 //$list = "select count(*) as cartCount from cart where ID_Person= '".$_SESSION['uname']."'";
+
 
 if(isset($_SESSION['Username'])){ //if logged in
 echo "<script>
