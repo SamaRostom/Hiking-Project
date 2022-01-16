@@ -61,10 +61,7 @@ while($data = $result->fetch_array(MYSQLI_ASSOC)){
         </div>
          <a href="DeleteTrips.php?id=<?php echo $data['Trip_Code']; ?>" class="btn ntm-danger mt-3"><i class="btn btn-default" >Delete</i></a>
          <a href="EditTrips.php?id=<?php echo $data['Trip_Code']; ?>" class="btn ntm-danger mt-3"><i class="btn btn-default" >Edit</i></a>
-        <!-- <form >
-         
-          <button type="submit" formaction="EditTrips.php"id="editTrip">Edit Trip</button>
-          </form> -->
+      
       </div>
     </div>
     
@@ -75,7 +72,7 @@ $conn->close();
 
  }
    
- 
+
   else if ($_SESSION['ID_Type'] == "2") {
   ?>
   <br><br>
@@ -110,10 +107,10 @@ while($data = $result->fetch_array(MYSQLI_ASSOC)){
          <a href="TripInfo.php?id=<?php echo $data['Trip_Code']; ?>" class="btn ntm-danger mt-3">See more</a>
         </div>
         <script>
-        // var Cart=[];
+     
         var Cart=new Array();
         function addarray(Trip_Code){
-            //alert("hi");
+           
             Cart.push(Trip_Code);
             alert(Cart);
         }

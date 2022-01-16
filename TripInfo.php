@@ -19,8 +19,7 @@
 <body>
 <?php
 include "Menu.php";
-// $id = $_GET['id'];
-// echo $id;
+
 if($_SESSION['ID_Type'] == "1"){
 	$servername = "localhost";
     $username = "root";
@@ -41,7 +40,7 @@ if($_SESSION['ID_Type'] == "1"){
         $End_Date=$data['End_Date'];
         $Description_Trip=$data['Description_Trip'];
 	}
-	// echo $Trip_Code." ".$Trip_Image." ".$Trip_Price." ".$City." ".$Hiking_Place." ";
+	
 ?>
     <br><br>
     <img src="<?php echo $Trip_Image ?>" id="tripimage" />
@@ -52,11 +51,9 @@ if($_SESSION['ID_Type'] == "1"){
     <?php echo "Start Date: ".$Start_Date ?><br>
     <?php echo "End Date: ".$End_Date ?><br>
     <?php echo "Description: ".$Description_Trip ?><br>
-    <a href="DeleteTrips.php?id=<?php echo $data['Trip_Code']; ?>" class="btn ntm-danger mt-3"><i class="btn btn-default" >Delete</i></a>
-          <form >
-          
-          <button type="submit" formaction="editTrip.php"id="editTrip">Edit Trip</button>
-          </form>
+   
+          <a href="DeleteTrips.php?id=<?php echo $data['Trip_Code']; ?>" class="btn ntm-danger mt-3"><i class="btn btn-default" >Delete</i></a>
+         <a href="EditTrips.php?id=<?php echo $data['Trip_Code']; ?>" class="btn ntm-danger mt-3"><i class="btn btn-default" >Edit</i></a>
         
 <?php
 }
@@ -80,7 +77,7 @@ if($_SESSION['ID_Type'] == "1"){
         $End_Date=$data['End_Date'];
         $Description_Trip=$data['Description_Trip'];
     }
-    // echo $Trip_Code." ".$Trip_Image." ".$Trip_Price." ".$City." ".$Hiking_Place." ";
+ 
 ?>
     <br><br>
     <img src="<?php echo $Trip_Image ?>" id="tripimage" />
