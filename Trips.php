@@ -85,7 +85,14 @@ $conn->close();
     $dbname = "webproject";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
+
 if (isset($_POST["add"])){
+$sql = " SELECT * FROM trips WHERE Trip_Code='".$_GET["id"]."'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($result); 
+if($row){
+  $Trip_Name =$row['Hiking_Place'];
+}
   if (isset($_SESSION["cart"])){
       $item_array_id = array_column($_SESSION["cart"],"Trip_Code");
       if (!in_array($_GET["id"],$item_array_id)){
@@ -94,6 +101,7 @@ if (isset($_POST["add"])){
               'Trip_Code' => $_GET["id"],
               'ID_Person' => $_POST["ID_Person"],
               'Trip_Price' => $_POST["Trip_Price"],
+              'Trip_Name' => $Trip_Name,
           );
           $_SESSION["cart"][$count] = $item_array;
           echo '<script>window.location="Trips.php"</script>';
@@ -106,6 +114,7 @@ if (isset($_POST["add"])){
         'Trip_Code' => $_GET["id"],
         'ID_Person' => $_POST["ID_Person"],
         'Trip_Price' => $_POST["Trip_Price"],
+        'Trip_Name' => $Trip_Name,
       );
       $_SESSION["cart"][0] = $item_array;
   }
