@@ -5,6 +5,12 @@
 			.navbar a i,.seperator , .navbar a{
 				color: #2a718e !important;
 			}
+      .logo{
+    border-radius: 100%;
+    /* border: 5px solid white; */
+    width: 53px;
+    height: 53px;
+}
 		</style>
 	</head>
 <body>
@@ -14,10 +20,7 @@
   ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-  <a class="navbar-brand" href="home.php">Logo</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <a class="navbar-brand" href="home.php"><img src="images/Logo.jpg" alt="Logo" class="logo" ></a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	  <li class="nav-item">
@@ -35,11 +38,9 @@
 		<li class="nav-item">
           <a class="nav-link history" href="history.php">History</a>
         </li>
-		<!-- <li class="nav-item">
-          <a class="nav-link equip" href="equipment.php">Equipment</a>
-        </li> -->
       </ul>
       <div class="d-flex">
+    <a class= "message text-decoration-none me-3" href= 'Messages.php'><i class="far fa-comment"></i>
 	  <a class="cart text-decoration-none me-3" href='cart.php'><i class="fas fa-shopping-cart"><span class="badge rounded-pill bg-danger"><?php echo $num_items_in_cart; ?></span></i></a>
 	  <a class="profile text-decoration-none me-3" href='profile.php'><i class="fas fa-user-alt"></i></a>
 		<a class="text-decoration-none signup me-3" href='signup.php'>Sign up</a>
@@ -52,9 +53,6 @@
 </nav>
 
 <?php
-
-//$list = "select count(*) as cartCount from cart where ID_Person= '".$_SESSION['uname']."'";
-
 
 if(isset($_SESSION['Username'])){ //if logged in
 echo "<script>
@@ -95,6 +93,7 @@ else{
 document.querySelector('.signout').style.display = 'none'
 document.querySelector('.profile').style.display = 'none'
 document.querySelector('.cart').style.display = 'none'
+document.querySelector('.message').style.display = 'none'
 </script>";
 }
 ?>
