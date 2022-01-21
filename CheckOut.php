@@ -2,14 +2,33 @@
 <html>
 <head>
 	<title>check out</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-image: url("images/w.jpg");
+            background-size:  cover;
+            background-repeat: no-repeat;
+        }
+
+    </style>
 </head>
 <body>
 <!-- h3ml eno yetba3 order detials el hos el recipt -->
 <div class="placeorder content-wrapper"><center>
-    <h1>Your Order Has Been Placed</h1>
-    <p>Thank you!</p>
-    <a href="Home.php">Back to home</a>
-    <a href="Survey.php">Take the survey</a>
+    <br>
+    <h3>Your Order Has Been Placed Successfully!</h3>
+    <h4>Thank you!</h4><br>
+    <!-- <a href="Home.php" type="button" class="rounded">Back to home</a> -->
+    <!-- <button class="button button4"></button> -->
+    <!-- <a href="Survey.php">Take the survey</a><br><br> -->
+    <!-- <a href="" type="button" class="btn btn-dark" action="CheckOut.php?action=view"><i class='fas fa-receipt'></i> Veiw Order Details</a> -->
+    <form method="post" action="CheckOut.php?action=view">
+    <button type="submit" name="home"  class="btn btn-outline-dark px-5 ms-2 mb-3" formaction="Home.php">Back to home</button>  
+    <button type="submit" name="survey"  class="btn btn-outline-dark px-5 ms-2 mb-3" formaction="Survey.php">Take the survey</button><br>
+        <button type="submit" name="view"  class="btn btn-dark"><i class='fas fa-receipt'></i> Veiw Order Details</button>                                     
+    </form>
+    
     
 </center>
 </div>
@@ -26,71 +45,63 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 foreach ($_SESSION["cart"] as $key => $value) {
     $Trip_Code = $value["Trip_Code"];
     $ID_Person = $value["ID_Person"];
-    $currentDateTime = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO `order`(`ID_Person`, `Trip_Code`, `Order_Date`, `Total_Price`) VALUES ('$ID_Person','$Trip_Code','$currentDateTime','$Total_Price')";
-    }  
-    
+    //$currentDateTime = date('Y-m-d H:i:s');
+    $sql = "INSERT INTO `order`(`ID_Person`, `Trip_Code`, `Order_Date`, `Total_Price`) VALUES ('$ID_Person','$Trip_Code','$currentDateTime','$Total_Price')";
+    if (mysqli_query($conn, $sql)) {
+        $last_id = mysqli_insert_id($conn);
+        
+    } 
+}  
+// $s="SELECT * FROM order WHERE Trip_Code='".$Trip_Code."' AND ID_Person='".$ID_Person."'";
+// 	$result = mysqli_query($conn, $s);
+// 	$row = mysqli_fetch_array($result); 
+//     if($row){
+//         $orderno = $row['Order_Code'];
+//     }
+
+//echo "Order Number:".$orderno;
+if (isset($_POST["view"])){
+    echo "<br><center><h4>Order Number: " . $last_id."</h4></center><br>";
+    ?>
+    <div style="clear: both"></div>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped table-bordered">
+            <tr>
+                <th width="10%">Trip Code</th>
+                <th width="25%">Trip Name</th>
+                <th width="25%">Trip Price</th>
+            </tr>
+           
+
+            <?php
+
+                if(!empty($_SESSION["cart"])){
+                    $total = 0;
+                    foreach ($_SESSION["cart"] as $key => $value) {
+                        
+                        ?>
+                        <tr>
+                            <td><?php echo $value["Trip_Code"]; ?></td>
+                            <td><?php echo $value["Trip_Name"]; ?></td>
+                            <td><?php echo $value["Trip_Price"]; ?> L.E </td>
+                        </tr>
+                        <?php
+                        $total = $total +  $value["Trip_Price"];
+                        $_SESSION['Total_Price']=$total;
+                    }
+                    ?>
+                        <tr>
+                            <td colspan="2" align="right"><b>Total</b></td>
+                            <th width="15%" align="left"><?php echo number_format($total, 2); ?> L.E </th>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+            </table>
+        </div>
+    </div>
+    <?php
+}
 ?>
-<!-- <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class='print' style="border: 1px solid #a1a1a1; width: 300px; background: white; padding: 10px; margin: 0 auto; text-align: center;">
-
-                    <div class="invoice-title" align="center">
-
-                        <h1>Order Details</h1>
-                    </div>
-
-                    <div class="invoice-title" align="left">
-                        Order # <b> 11111</b>
-                    </div>
-                    </br>
-                    </br>
-
-                    <div>
-                        <div>
-                            <table class="table table-condensed">
-                                <thead>
-                                <tr>
-                                    <td class="text-center"><strong>No</strong></td>
-                                    <td class="text-center"><strong>Pname</strong></td>
-                                    <td class="text-center"><strong>Qty</strong></td>
-                                    <td class="text-center"><strong>Price</strong></td>
-                                    <td class="text-right"><strong>Total</strong></td>
-                                </tr>
-                                </thead>
-
-                                <tr>
-                                    <td class="text-center">
-                                        1
-                                    </td >
-                                    <td class="text-center">
-                                        Cake
-                                    </td >
-                                    <td class="text-center">
-                                        2
-                                    </td >
-                                        <td class="text-center">120</td>
-                                        <td class="text-right">240</td>
-                                    </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div  align="right">
-                        Sub Total &nbsp;&nbsp;<b>240</b>
-                    </div>
-                    <div align="right">
-                        Pay  &nbsp;&nbsp; <b>220</b>
-                    </div>
-                    <div align="right">
-                        Due &nbsp;&nbsp;   <b>20</b>
-                    </div>
-                    <input style="padding:5px;" value="Print Document" type="button" onclick="myFunction()" class="button"></input>
-                </div>
-                <div>
-                    <div>
-                    </div> -->
-
-
 </body>
 </html>
