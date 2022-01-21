@@ -33,7 +33,7 @@
 
 
 		echo"<div class='col-10 col-md-8 col-lg-6 container p-4 my-5 mx-auto'>
-		<h1 class='display-6 mb-3'>Edit your Profile</h1>
+		<h1 class='display-6 mb-3 text-center'>Edit your Profile</h1>
 	    <form action='' method='post' enctype='multipart/form-data'>
 
 		Username: <input type= 'text' class='form-control' name= 'Username'  value=".$_SESSION['Username'].">
