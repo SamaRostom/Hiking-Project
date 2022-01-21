@@ -37,7 +37,7 @@ section{
 	min-height: 90vh;
 	display: flex;
 	align-items: center;
-	background: url(images/108.jpg) no-repeat;
+	background: url(images/Autumn.jpg) no-repeat;
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
@@ -115,7 +115,7 @@ section{
 	/*rgb-> red green blue, a-> for opacity of color*/
 	box-shadow: 0 5px 25px rgba(1 1 1 / 15%);
 	/*border lines teb2a curved*/
-	border-radius: 10px;
+	border-radius: 8px;
 	/*lw value wa7da bs yeb2a kol el directions teb2a 25px top bottom right and left*/
 	/*padding-> by3mel mesa7a gwa el element nafso ely hwa el card 3andy dlwa2ty
 	margin->by3mel el mesa7a ben el elements w ba3daha*/
@@ -125,7 +125,7 @@ section{
 }
 .card:hover{
 	color: white;
-	background-color: #8A8AFF;
+	background-color: #2a718e;
 	transform: scale(1.1);
 }
 
