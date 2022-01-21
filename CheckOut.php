@@ -51,6 +51,7 @@ foreach ($_SESSION["cart"] as $key => $value) {
         $last_id = mysqli_insert_id($conn);
         
     } 
+    
 }  
 // $s="SELECT * FROM order WHERE Trip_Code='".$Trip_Code."' AND ID_Person='".$ID_Person."'";
 // 	$result = mysqli_query($conn, $s);
@@ -101,7 +102,9 @@ if (isset($_POST["view"])){
         </div>
     </div>
     <?php
+    unset($_SESSION['cart']);
 }
+
 ?>
 </body>
 </html>
