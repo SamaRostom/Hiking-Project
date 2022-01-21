@@ -1,10 +1,11 @@
 <?php
-include "Menu.php"; 
+include "navbar.php";
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <title>REI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="icon" type="image/png" href="icon.png">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
  <style>
@@ -124,7 +125,7 @@ section{
 }
 .card:hover{
 	color: white;
-	background-color: #FF8A8A;
+	background-color: #8A8AFF;
 	transform: scale(1.1);
 }
 
@@ -185,7 +186,7 @@ section{
 	<center>
 	<h2>THE MOUNTAINS</h2>
 	<h3>ARE CALLING..AND I MUST GO</h3>
-<a href="Login.php" id="link">Login</a>
+<!-- <a href="Login.php" id="link">Login</a> -->
 <div class="social-icons" id="social-icons">
 	<a href="#github"><i class="fab fa-github"></i></a>
 	<a href="#instagram"><i class="fab fa-instagram"></i></a>
@@ -260,7 +261,9 @@ src="https://www.youtube.com/watch?v=BapSQFJPMM0?autoplay=1&mute=1&loop=1">
 </div>
 </section>
 
-
+<?php
+include "footer.php";
+?>
 
 
 
