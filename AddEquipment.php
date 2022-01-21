@@ -2,13 +2,15 @@
 <html>
 <head>
 	<title>Equipment</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 	<?php
-     $servername="localhost";
+     	$servername="localhost";
 		$username="root";
 		$password="";
-		$DB="hiking";
+		$DB="webproject";
 
 	$conn=mysqli_connect($servername,$username,$password,$DB);
 	if(!$conn){
