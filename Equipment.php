@@ -24,16 +24,17 @@
   /*border lines teb2a curved*/
   /*border-radius: 10px;*/
   padding: 10px;
-  margin: 5px;
+  margin: auto;
   transition: 0.7s ease;
   text-align: center;
+
 }
  #equipcard:hover{
   /*color: white;*/
   transform: scale(0.9);
 }
 .card-body{
-  margin: 5px;
+  margin: auto;
 }
 h4{
   color: #2a718e;
@@ -103,8 +104,8 @@ while($data = $res->fetch_array(MYSQLI_ASSOC)){
 ?>
 
 <div class="col-lg-4 col-md-6 mb-4" id="fullcard">
-      <div class="card h-100"  id="equipcard"> 
-        <a href="#"><img src="<?php echo $i ?>" width=200px height=200px class="card-img-top" /></a>
+      <div class="card h-100" id="equipcard"> 
+        <a href="#"><img src="<?php echo $i ?>" width=100% class="card-img-top" /></a>
         <div class="card-body">
           <h4 class="card-title text-primary"><b>Equipment: </b><?php echo $e; ?></h4>
           <h4 class="card-title text-primary"><b>Price: </b><?php echo $ep; ?></h4>
@@ -173,10 +174,10 @@ else if($_SESSION['ID_Type'] == "2"){
       if (!in_array($_GET["id"],$item_array_id)){
           $count = count($_SESSION["cart"]);
           $item_array = array(
-              'Item_Code' => $_GET["id"],
+              'Product_Code' => $_GET["id"],
               'ID_Person' => $_POST["ID_Person"],
-              'Item_Price' => $_POST["Item_Price"],
-              'Equip_Name' => $Equip_Name,
+              'Product_Price' => $_POST["Item_Price"],
+              'Product_Name' => $Equip_Name,
           );
           $_SESSION["cart"][$count] = $item_array;
           echo '<script>window.location="Equipment.php"</script>';
@@ -186,10 +187,10 @@ else if($_SESSION['ID_Type'] == "2"){
       }
   }else{
       $item_array = array(
-        'Item_Code' => $_GET["id"],
+        'Product_Code' => $_GET["id"],
         'ID_Person' => $_POST["ID_Person"],
-        'Item_Price' => $_POST["Item_Price"],
-        'Equip_Name' => $Equip_Name,
+        'Product_Price' => $_POST["Item_Price"],
+        'Product_Name' => $Equip_Name,
       );
     $_SESSION["cart"][0] = $item_array;
   }
