@@ -40,7 +40,7 @@
         </li>
       </ul>
       <div class="d-flex">
-    <a class= "message text-decoration-none me-3" href= 'Messages.php'><i class="far fa-comment"></i>
+    <a class= "message text-decoration-none me-3" href= 'Messages.php'><i class="fas fa-comment"></i>
 	  <a class="cart text-decoration-none me-3" href='cart.php'><i class="fas fa-shopping-cart"><span class="badge rounded-pill bg-danger"><?php echo $num_items_in_cart; ?></span></i></a>
 	  <a class="profile text-decoration-none me-3" href='profile.php'><i class="fas fa-user-alt"></i></a>
 		<a class="text-decoration-none signup me-3" href='signup.php'>Sign up</a>

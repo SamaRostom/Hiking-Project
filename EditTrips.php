@@ -2,10 +2,29 @@
 <html>
 <head>
 	<title>Edit Trips</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        input{
+            margin-bottom: 50px;
+            border-radius: 5px;
+        }
+        body{
+            background-image: url("images/mm.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;   
+           
+        }
+       .container{
+            background-color: #ffffffad;
+        }
+       
+        </style>
 </head>
 <body>
 
 		<?php
+        include "navbar.php";
 		$conn= new mysqli("localhost","root","","webproject");
          if($conn -> connect_error)
  	     die("fatal error - cannot connect to DB ");
@@ -25,15 +44,28 @@
 
        
          }
-        echo "<form action='' method='post'>";
-        echo "Trip_Price: <input type= 'text'  name= 'Trip_Price'  value=".$Trip_Price."><br>";
-        echo "Start_Date: <input type= 'text'  name= 'Start_Date' value=".$Start_Date."><br>";
-        echo "End_Date: <input type= 'text'  name= 'End_Date' value=".$End_Date."><br>";
-        echo "Description_Trip: <input type= 'text'  name= 'Description_Trip' value=".$Description_Trip."><br>";
-        echo "City: <input type= 'text'  name= 'City' value=".$City."><br>";
-        echo "Hiking_Place: <input type= 'text'  name= 'Hiking_Place' value=".$Hiking_Place."><br>";
-        echo "<input type= 'submit' id='submit' name= 'submit'  value= 'Edit Trip' ><br>";
-        echo"</form>";
+         echo"<div class='col-10 col-md-8 col-lg-6 container p-4 my-5 mx-auto'>
+        <h1 class='display-6 mb-3 text-center'><b>Edit Trips</b></h1>
+        <form action='' method='post' enctype='multipart/form-data'>
+
+        <form action='' method='post'>
+        The Price: <input type= 'text' class='form-control' name= 'Trip_Price'  value=".$Trip_Price."><br>
+        Start Date: <input type= 'text' class='form-control' name= 'Start_Date' value=".$Start_Date."><br>
+        End Date: <input type= 'text' class='form-control' name= 'End_Date' value=".$End_Date."><br>
+        Description: <input type= 'text'  class='form-control' name= 'Description_Trip' value=".$Description_Trip."><br>
+        Hiking City: <input type= 'text' class='form-control' name= 'City' value=".$City."><br>
+        Hiking Place: <input type= 'text' class='form-control' name= 'Hiking_Place' value=".$Hiking_Place."><br>
+        Trip Image: <input type='file' class='form-control' name='Trip_Img' id='Trip_Img' ><br><br>
+         <div style='text-align:center'><input type='submit' class='btn btn-primary px-5 mt-4' name='submit' value='Edit'>
+        <input type='button' class='btn btn-outline-dark px-5 ms-3 mt-4' onclick='history.back();' value='Cancel'></div>
+
+        </form>
+        </div>";
+        ?>
+         
+       
+       
+        <?php
         if(isset($_POST['submit'])){
             $Trip_Price=$_POST['Trip_Price'];
             $Start_Date=$_POST['Start_Date'];
@@ -41,15 +73,19 @@
             $City=$_POST['City'];
             $Hiking_Place=$_POST['Hiking_Place'];
             $Description_Trip=$_POST['Description_Trip'];
+            $dir="images/";
+            $filename=$dir.basename($_FILES['Trip_Img']['name']);
+         move_uploaded_file($_FILES['Trip_Img']['tmp_name'], $filename);
 
-         $sql="UPDATE `trips` SET `Trip_Price`='$Trip_Price',`Start_Date`='$Start_Date',`End_Date`='$End_Date',`Description_Trip`='$Description_Trip',`City`='$City',`Hiking_Place`='$Hiking_Place' WHERE Trip_Code ='".$edited."'" ;
-           echo $Trip_Code;
+         $sql="UPDATE `trips` SET `Trip_Price`='$Trip_Price',`Start_Date`='$Start_Date',`End_Date`='$End_Date',`Description_Trip`='$Description_Trip',`City`='$City',`Hiking_Place`='$Hiking_Place',`Trip_Image`='$filename' WHERE Trip_Code ='".$edited."'" ;
+           
        
 
-         $result=mysqli_query($conn,$sql);
-           if($result){
-            header("Location:Trips.php");
+         $r=mysqli_query($conn,$sql);
+           if($r){
+            echo '<script>window.location="Trips.php"</script>';
         }
+
         }
         $conn->close();
 		?>
@@ -57,4 +93,5 @@
 	
   
 </body>
+<?php include('footer.php') ?>
 </html>

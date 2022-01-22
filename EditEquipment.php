@@ -45,22 +45,22 @@
         }
         
         echo"<div class='col-10 col-md-8 col-lg-6 container p-4 my-5 mx-auto'>";
-        echo"<h1 class='display-6 mb-3'>Edit your Trips</h1>";
+        echo"<h1 class='display-6 mb-3 text-center'>Edit Equipment</h1>";
         echo"<form action='' method='post' enctype='multipart/form-data'>";
 
-        echo"Equipment: <input type= 'text'  name= 'Equipment_Name' value=".$Equipment_Name."><br>";
+        echo"Equipment: <input type= 'text' class='form-control' name= 'Equipment_Name' value=".$Equipment_Name.">";
 
-        echo"Type: <input type= 'text'  name= 'Product_Type' value=".$Product_Type."><br>";
+        echo"Type: <input type= 'text' class='form-control' name= 'Product_Type' value=".$Product_Type.">";
 
-        echo"Price: <input type= 'text'  name= 'Item_Price' value=".$Item_Price."><br>";
+        echo"Price: <input type= 'text'  class='form-control' name= 'Item_Price' value=".$Item_Price.">";
 
-        echo"Brief Description: <input type= 'text'  name= 'Brief_Description' value=".$Brief_Description."><br>";
+        echo"Brief Description: <input type= 'text' class='form-control' name= 'Brief_Description' value=".$Brief_Description.">";
 
-        echo"Full Description: <input type= 'text'  name= 'Full_Description' value=".$Full_Description."><br>";
+        echo"Full Description: <input type= 'text' class='form-control' name= 'Full_Description' value=".$Full_Description.">";
         
         echo"<div style='text-align:center'><input type='submit' class='btn btn-primary px-5 mt-4' name='submit' value='Save'>";
 
-        echo"<input type='reset' class='btn btn-outline-dark px-5 ms-3 mt-4' value='Reset'></div>";
+        echo"<input type='button' class='btn btn-outline-dark px-5 ms-3 mt-4' onclick='history.back();' value='Cancel'></div>";
         echo"</form>";
         echo"</div>";
         
