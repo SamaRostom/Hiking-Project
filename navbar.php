@@ -24,30 +24,37 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	  <li class="nav-item">
-          <a class="nav-link" href="home.php">Home</a>
+          <a class="nav-link" href="Home.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link about" href="aboutus.php">About Us</a>
+          <a class="nav-link about" href="Aboutus.php">About Us</a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link contact" href="contactus.php">Contact Us</a>
+          <a class="nav-link contact" href="Contactus.php">Contact Us</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link equipment" href="Equipment.php">Equipment</a>
+        </li>
+
 		<li class="nav-item">
-          <a class="nav-link trips" href="trips.php">Trips</a>
+          <a class="nav-link trips" href="Trips.php">Trips</a>
         </li>
+
+     
 		<li class="nav-item">
           <a class="nav-link history" href="history.php">History</a>
         </li>
       </ul>
       <div class="d-flex">
-    <a class= "message text-decoration-none me-3" href= 'Messages.php'><i class="fas fa-comment"></i>
-	  <a class="cart text-decoration-none me-3" href='cart.php'><i class="fas fa-shopping-cart"><span class="badge rounded-pill bg-danger"><?php echo $num_items_in_cart; ?></span></i></a>
-	  <a class="profile text-decoration-none me-3" href='profile.php'><i class="fas fa-user-alt"></i></a>
-		<a class="text-decoration-none signup me-3" href='signup.php'>Sign up</a>
-		<span class='seperator me-3'>|</span>
+        <a class= "message text-decoration-none me-3" href= 'Messages.php'><i class="fas fa-comment"></i>
+	      <a class="cart text-decoration-none me-3" href='cart.php'><i class="fas fa-shopping-cart"><span class="badge rounded-pill bg-danger"><?php echo $num_items_in_cart; ?></span></i></a>
+	      <a class="profile text-decoration-none me-3" href='profile.php'><i class="fas fa-user-alt"></i></a>
+		    <a class="text-decoration-none signup me-3" href='signup.php'>Sign up</a>
+		  <span class='seperator me-3'>|</span>
         <a class="text-decoration-none me-3 signin" href='login.php'>Sign in</a>
         <a class="signout text-decoration-none me-3" href='signout.php'>Sign out</a>
-</div>
+      </div>
     </div>
   </div>
 </nav>
