@@ -6,7 +6,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style type="text/css">
-      @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
 
       body{
          background-image: url("images/w.jpg");
@@ -152,10 +151,10 @@ if($row){
       if (!in_array($_GET["id"],$item_array_id)){
           $count = count($_SESSION["cart"]);
           $item_array = array(
-              'Product_Code' => $_GET["id"],
+              'Trip_Code' => $_GET["id"],
               'ID_Person' => $_POST["ID_Person"],
-              'Product_Price' => $_POST["Trip_Price"],
-              'Product_Name' => $Trip_Name,
+              'Trip_Price' => $_POST["Trip_Price"],
+              'Trip_Name' => $Trip_Name,
           );
           $_SESSION["cart"][$count] = $item_array;
           echo '<script>window.location="Trips.php"</script>';
@@ -165,10 +164,10 @@ if($row){
       }
   }else{
       $item_array = array(
-        'Product_Code' => $_GET["id"],
+        'Trip_Code' => $_GET["id"],
         'ID_Person' => $_POST["ID_Person"],
-        'Product_Price' => $_POST["Trip_Price"],
-        'Product_Name' => $Trip_Name,
+        'Trip_Price' => $_POST["Trip_Price"],
+        'Trip_Name' => $Trip_Name,
       );
       $_SESSION["cart"][0] = $item_array;
   }
@@ -195,7 +194,10 @@ while($data = $result->fetch_array(MYSQLI_ASSOC)){
           <h4 class="price"><?php echo $tp. " L.E"; ?></h4>
           <h4 class="card-title text-primary"><b>From </b><?php echo $std; ?></h4>
           <h4 class="card-title text-primary"><b>to </b><?php echo $end; ?></h4>
-          
+
+          <a href="Rate.php?id=<?php echo $data['Trip_Code']; ?>"class="btn ntm-danger mt-3">
+          <i class="fas fa-star-half-alt"></i> Rate Trip</a>
+        <br>
          <a href="TripInfo.php?id=<?php echo $data['Trip_Code']; ?>"class="btn ntm-danger mt-3">
           More <i class="fas fa-angle-double-right"></i></a>
         </div>
