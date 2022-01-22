@@ -56,7 +56,7 @@ if($_SESSION['ID_Type'] == "1"){
     
     <img src="<?php echo $Trip_Image ?>" id="tripimage" /><br>
 
-<div class='col-10 col-md-8 col-lg-3 container p-4 my-3 mx-auto'>
+<div class='col-5 col-md-8 col-lg-3 container p-4 my-3 mx-auto'>
         <h1 class='display-6 mb-3 text-center'><b>Trips Highlights</b></h1>
     <?php echo "Trip Name: ".$Hiking_Place ?><br>
     <?php echo "City: ".$City ?><br>
@@ -94,10 +94,10 @@ if($_SESSION['ID_Type'] == "1"){
  
 ?>
     <br><br>
-<div class="col-sm-15">
+<!-- <div class="col-sm-15">
     <img src="<?php echo $Trip_Image ?>" id="tripimage" />
-    </div>
-<div class='col-10 col-md-8 col-lg-3 container p-4 my-3 mx-auto'>
+    </div> -->
+<div class='col-10 col-md-8 col-lg-3 container p-4 my-auto mx-15'>
         <h1 class='display-6 mb-3 text-center'><b>Trips Highlights</b></h1>
     <?php echo "Trip Name: ".$Hiking_Place ?><br>
     <?php echo "City: ".$City ?><br>
@@ -114,7 +114,7 @@ if($_SESSION['ID_Type'] == "1"){
         
 <?php
 }
-include "footer.php";
+// include "footer.php";
 ?>	
 
 </body>
