@@ -65,8 +65,8 @@ img {
 @media screen and (max-width: 1000px) {
   .column-66,
   .column-33 {
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
   }
   img {
     margin: auto;
@@ -83,8 +83,8 @@ img {
   <div class="row">
     <div class="column-66">
       <h1 class="xlarge-font">
-      <h1 class="large-font" style="color:#2E2EFF;"><b>Who we are</b></h1>
-      <p><span style="font-size:26px">Since 1938, we have been your local outdoor co-op, working to help you experience the transformational power of nature. We bring you top-quality gear and apparel, expert advice, rental equipment, inspiring stories of life outside and outdoor experiences to enjoy alone or share with your friends and family. And because we have no shareholders, with every purchase you make with Take A Hike, you are choosing to steward the outdoors, support sustainable business and help the fight for life outside.So whether you’re new to the outdoors or a seasoned pro, we hope you’ll join us.
+      <h1 class="large-font" style="color:#2a718e;"><b>Who we are</b></h1>
+      <p><span style="font-size:26px">We bring you top-quality gear and apparel, expert advice, rental equipment, inspiring stories of life outside and outdoor experiences to enjoy alone or share with your friends and family. With every purchase you make with Take A Hike, you are choosing to steward the outdoors, support sustainable business and help the fight for life outside.So whether you’re new to the outdoors or a seasoned pro, we hope you’ll join us.
     </div>
     <div class="column-33">
         <img src="images/Bedouin.jpg" width="435" height="571">
@@ -98,9 +98,9 @@ img {
       <img src="images/hikingtrail.jpg" alt="App" width="335" height="471">
     </div>
     <div class="column-66">
-      <h1 class="xlarge-font" style="color:#2E2EFF;"><b>Our history: It all started with an ice axe</b></h1>
+      <h1 class="xlarge-font" style="color:#2a718e;"><b>Our history: It all started with an ice axe</b></h1>
       <!-- <h1 class="large-font" style="color:red;"><b>Our history: It all started with an ice axe</b></h1> -->
-      <p><span style="font-size:24px">We’ve been your outdoor co-op for 82 years. Take A Hike was founded in 1938 when a group of 23 climbing friends, united by their love for the outdoors, decided to source quality and affordable gear for their adventures.Today the Take A Hike community has 20 million lifetime members, nearly 15,000 employees and 168 locations in 39 states and the District of Columbia.</p>
+      <p><span style="font-size:24px">We’ve been your outdoor co-op for 82 years. Take A Hike was founded in 1938 when a group of 23 climbing friends, united by their love for the outdoors, decided to source quality and affordable gear for their adventures.Today the Take A Hike community has 20 million lifetime members, nearly 15,000 employees and 168 locations in 39 states.</p>
 <!--       <button class="button" style="background-color:red">Read More</button> -->
     </div>
   </div>
