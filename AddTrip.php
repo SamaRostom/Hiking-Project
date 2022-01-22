@@ -2,9 +2,27 @@
 <html>
 <head>
 	<title>Add Trips</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    input{
+            margin-bottom: 50px;
+            border-radius: 5px;
+        }
+        body{
+            background-image: url("images/j.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;   
+           
+        }
+        .container{
+            background-color: #ffffffad;
+        }
+  </style>
 </head>
 <body>
 	<?php
+  include "navbar.php";
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -24,24 +42,29 @@ if(isset($_POST['Trip_Btn'])){
     }
 }
 	?>
-	<h2>Trip Details</h2>
+	
+  <div class='col-10 col-md-8 col-lg-6 container p-4 my-5 mx-auto'>
+        <h1 class='display-6 mb-3 text-center'><b>Add Trips</b></h1>
 <form method="post" action="" enctype="multipart/form-data"> 
-<input type="text"  placeholder= "Price" name="TripPrice"><br><br>
+ The Price: <input type="text" class='form-control' placeholder= "Price" name="TripPrice"><br><br>
 
-   <input type="text" placeholder= "start date" name="StartDate"><br><br>
+  The Start Date: <input type="text" class='form-control' placeholder= "start date" name="StartDate"><br><br>
 
-   <input type="text" placeholder= "end date" name="EndDate"><br><br>
+  The End Date: <input type="text" class='form-control' placeholder= "end date" name="EndDate"><br><br>
 
-   <input type="text" placeholder= "description trip" name="DescriptionTrip"><br><br>
+   The Description: <input type="text" class='form-control' placeholder= "description trip" name="DescriptionTrip"><br><br>
 
-   <input type="text" placeholder= "city" name="HikingCity"><br><br>
+   The City: <input type="text" class='form-control' placeholder= "city" name="HikingCity"><br><br>
 
-   <input type="text" placeholder= "Hiking place" name="HikingPlace"><br><br>
-    <input type="file" name="Trip_Img" id="Trip_Img" ><br><br>
-   <input type="submit" value="Add Trip" name="Trip_Btn">
-   <input type="reset">
+   The Hiking Place:  <input type="text" class='form-control' placeholder= "Hiking place" name="HikingPlace"><br><br>
+    Image: <input type="file" class='form-control' name="Trip_Img" id="Trip_Img" ><br><br>
+   <div style='text-align:center'><input type='submit' class='btn btn-primary px-5 mt-4' name='submit' value='Add Trip'>
+        <input type='button' class='btn btn-outline-dark px-5 ms-3 mt-4' onclick='history.back();' value='Reset'></div>
+
+ </div>
 
 </form>
 
 </body>
+<?php include('footer.php') ?>
 </html>
