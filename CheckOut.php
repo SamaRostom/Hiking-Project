@@ -14,15 +14,10 @@
     </style>
 </head>
 <body>
-<!-- h3ml eno yetba3 order detials el hos el recipt -->
 <div class="placeorder content-wrapper"><center>
     <br>
     <h3>Your Order Has Been Placed Successfully!</h3>
     <h4>Thank you!</h4><br>
-    <!-- <a href="Home.php" type="button" class="rounded">Back to home</a> -->
-    <!-- <button class="button button4"></button> -->
-    <!-- <a href="Survey.php">Take the survey</a><br><br> -->
-    <!-- <a href="" type="button" class="btn btn-dark" action="CheckOut.php?action=view"><i class='fas fa-receipt'></i> Veiw Order Details</a> -->
     <form method="post" action="CheckOut.php?action=view">
     <button type="submit" name="home"  class="btn btn-outline-dark px-5 ms-2 mb-3" formaction="Home.php">Back to home</button>  
     <button type="submit" name="survey"  class="btn btn-outline-dark px-5 ms-2 mb-3" formaction="Survey.php">Take the survey</button><br>
@@ -34,35 +29,8 @@
 </div>
 <?php
 session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "webproject";
-
-$Total_Price=$_SESSION["Total_Price"];
-$currentDateTime = date('Y-m-d H:i:s');
-$conn = new mysqli($servername, $username, $password, $dbname);
-foreach ($_SESSION["cart"] as $key => $value) {
-    $Trip_Code = $value["Trip_Code"];
-    $ID_Person = $value["ID_Person"];
-    //$currentDateTime = date('Y-m-d H:i:s');
-    $sql = "INSERT INTO `order`(`ID_Person`, `Trip_Code`, `Order_Date`, `Total_Price`) VALUES ('$ID_Person','$Trip_Code','$currentDateTime','$Total_Price')";
-    if (mysqli_query($conn, $sql)) {
-        $last_id = mysqli_insert_id($conn);
-        
-    } 
-    
-}  
-// $s="SELECT * FROM order WHERE Trip_Code='".$Trip_Code."' AND ID_Person='".$ID_Person."'";
-// 	$result = mysqli_query($conn, $s);
-// 	$row = mysqli_fetch_array($result); 
-//     if($row){
-//         $orderno = $row['Order_Code'];
-//     }
-
-//echo "Order Number:".$orderno;
 if (isset($_POST["view"])){
-    echo "<br><center><h4>Order Number: " . $last_id."</h4></center><br>";
+    echo "<br><center><h4>Order Number: " . $_SESSION['last_id']."</h4></center><br>";
     ?>
     <div style="clear: both"></div>
         <div class="table-responsive">
@@ -104,7 +72,27 @@ if (isset($_POST["view"])){
     <?php
     unset($_SESSION['cart']);
 }
-
+else{
+    
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "webproject";
+    
+    $Total_Price=$_SESSION["Total_Price"];
+    $currentDateTime = date('Y-m-d H:i:s');
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    foreach ($_SESSION["cart"] as $key => $value) {
+        $Trip_Code = $value["Trip_Code"];
+        $ID_Person = $value["ID_Person"];
+        $sql = "INSERT INTO `order`(`ID_Person`, `Trip_Code`, `Order_Date`, `Total_Price`) VALUES ('$ID_Person','$Trip_Code','$currentDateTime','$Total_Price')";
+        $r2=mysqli_query($conn,$sql);
+    }  
+    if ($r2) {
+        $last_id = mysqli_insert_id($conn);  
+        $_SESSION['last_id']=$last_id;
+    } 
+}
 ?>
 </body>
 </html>
