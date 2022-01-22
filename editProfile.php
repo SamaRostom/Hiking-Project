@@ -13,7 +13,8 @@
 			background-size: contain;
 			background-repeat: no-repeat;	
 			background-position-y: bottom;
-			height:100vh;
+			height:11
+			0vh;
 		}
 		.container{
 			background-color: #ffffffad;
@@ -53,34 +54,13 @@ position: absolute;
 
         $conn = new mysqli($servername, $username, $password, $dbname);
 
-
 		echo"<div class='col-10 col-md-8 col-lg-6 container p-4 my-5 mx-auto'>
 		<h1 class='display-6 mb-3 text-center'>Edit your Profile</h1>
 	    <form action='' method='post' enctype='multipart/form-data'>
 		Username: <input type= 'text' class='form-control' name= 'Username'  value=".$_SESSION['Username'].">
 		Email: <input type= 'text'  class='form-control' name= 'Email' value=".$_SESSION['Email'].">
-		Password:
-		<div class='input-group mb-3'>
-		<input type= 'password' class= 'form-control' name='Password' value=".$_SESSION['Password'].">
-		<div class='showBtn' onclick='ShowPassword()'><i class='far fa-eye'></i></div>
-		</div>
-		City:<select class='form-select' name='City'>
-        <option selected disabled hidden>".$_SESSION['City']."</option>
-        <option value='Cairo'>Cairo</option>
-        <option value='Alexandria'>Alexandria</option>
-        <option value='Luxor'>Luxor</option>
-        <option value='Aswan'>Aswan</option>
-        <option value='Asyut'>Asyut</option>
-        <option value='Sohag'>Sohag</option>
-        <option value='Port Said'>Port Said</option>
-        <option value='Behira'>Behira</option>
-        <option value='Faiyum'>Faiyum</option>
-        <option value='Giza'>Giza</option>
-        <option value='Ismailia'>Ismailia</option>
-        <option value='Kafr El Sheikh'>Kafr El Sheikh</option>
-        <option value='Red Sea'>Red Sea</option>
-        <option value='Matruh'>Matruh</option>
-    </select>
+		Password: <input type= 'password' class= 'form-control' name='Password' value=".$_SESSION['Password'].">
+		City: <input type= 'text'  class='form-control' name= 'City' value=".$_SESSION['City'].">
 		Gender: <input type= 'text'  class='form-control' name= 'Gender' value=".$_SESSION['Gender'].">
 		Phone Number: <input type= 'text'  class='form-control' name= 'Phone_Number' value=".$_SESSION['Phone_Number'].">
 		Emergency Number: <input type= 'text'  class='form-control' name= 'Emergency_Number' value=".$_SESSION['Emergency_Number'].">
