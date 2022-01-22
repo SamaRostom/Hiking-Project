@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         input{
-            margin-bottom: 50px;
+            margin-bottom: .5rem;
             border-radius: 5px;
         }
         body{
@@ -49,13 +49,13 @@
         <form action='' method='post' enctype='multipart/form-data'>
 
         <form action='' method='post'>
-        The Price: <input type= 'text' class='form-control' name= 'Trip_Price'  value=".$Trip_Price."><br>
-        Start Date: <input type= 'text' class='form-control' name= 'Start_Date' value=".$Start_Date."><br>
-        End Date: <input type= 'text' class='form-control' name= 'End_Date' value=".$End_Date."><br>
-        Description: <input type= 'text'  class='form-control' name= 'Description_Trip' value=".$Description_Trip."><br>
-        Hiking City: <input type= 'text' class='form-control' name= 'City' value=".$City."><br>
-        Hiking Place: <input type= 'text' class='form-control' name= 'Hiking_Place' value=".$Hiking_Place."><br>
-        Trip Image: <input type='file' class='form-control' name='Trip_Img' id='Trip_Img' ><br><br>
+        The Price: <input type= 'text' class='form-control' name= 'Trip_Price'  value=".$Trip_Price.">
+        Start Date: <input type= 'text' class='form-control' name= 'Start_Date' value=".$Start_Date.">
+        End Date: <input type= 'text' class='form-control' name= 'End_Date' value=".$End_Date.">
+        Description: <input type= 'text'  class='form-control' name= 'Description_Trip' value=".$Description_Trip.">
+        Hiking City: <input type= 'text' class='form-control' name= 'City' value=".$City.">
+        Hiking Place: <input type= 'text' class='form-control' name= 'Hiking_Place' value=".$Hiking_Place.">
+        Trip Image: <input type='file' class='form-control' name='Trip_Img' id='Trip_Img' >
          <div style='text-align:center'><input type='submit' class='btn btn-primary px-5 mt-4' name='submit' value='Edit'>
         <input type='button' class='btn btn-outline-dark px-5 ms-3 mt-4' onclick='history.back();' value='Cancel'></div>
 
