@@ -73,7 +73,6 @@ if($_SESSION['ID_Type'] == "1"){
    <br><br>
    
     <a href="AddTrip.php" class="btn ntm-danger mt-3" id="addequipbtn">
-         
             <i class="fas fa-plus-square"></i> New
           </a>
      <br><br>
