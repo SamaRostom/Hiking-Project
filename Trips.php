@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+  <title>Trips</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+
+      body{
+         background-image: url("images/w.jpg");
+         background-size: 100% 100%;
+            background-repeat: no-repeat;   
+         text-align: center;
+        
+      }
+      
+.container{
+       padding: 0 15px;
+        content: " ";
+        clear: both;
+        display: table;
+         border-radius: 25px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 100, 0.2);
+        max-width: 455px;
+        margin: auto;
+        text-align: center;
+        
+}
+        
+
+      
+.price {
+      color: grey;
+      font-size: 22px;
+}
+
+    </style>
 </head>
 <body>
-  <!-- <script>
-    function addtosession(){
-      $_SESSION['Trip_Image'] = $t;
-      $_SESSION['Trip_Price'] = $tp;
-            $_SESSION['City'] = $c;
-            $_SESSION['Description_Trip']=$d;
-            $_SESSION['Hiking_Place'] = $hp;
-            $_SESSION['Start_Date'] = $std;
-            $_SESSION['End_Date'] = $end;
-
-    }
-  </script> -->
+  
 
 <?php
 include "navbar.php";
 if($_SESSION['ID_Type'] == "1"){
+
   ?>
-   <br><br>
-    <form method="post" action="AddTrip.php"> <input type="submit" name="addtrip" value="Add Trip"></form>
+   <br><br><p class="buton">
+    <form method="post" action="AddTrip.php"> <input type="submit" name="addtrip"  class="btn btn-secondary" value="Add Trip"></form>
      <br><br>
+   </p>
      <div class="row">
       <?php
     $servername = "localhost";
@@ -48,22 +69,26 @@ while($data = $result->fetch_array(MYSQLI_ASSOC)){
   $end=$data['End_Date'];
   $d=$data['Description_Trip'];
 ?>
-    <div class="col-lg-4 col-md-6 mb-4">
+
+    <div class="col-lg-4 col-md-6 container mb-4">
       <div class="card h-100"> 
         <a href="#"><img src="<?php echo $t ?>" width=400px height=200px class="card-img-top" /></a>
-        <div class="card-body">
+        
           <h4 class="card-title text-primary"><b>Place: </b><?php echo $hp; ?></h4>
-          <h4 class="card-title text-primary"><b>Price: </b><?php echo $tp; ?></h4>
-          <h4 class="card-title text-primary"><b>Start date: </b><?php echo $std; ?></h4>
-          <h4 class="card-title text-primary"><b>End date: </b><?php echo $end; ?></h4>
-          <h4 class="card-title text-primary"><b>City: </b><?php echo $c; ?></h4>
+          <h4 class="card-title text-primary"><b>In </b><?php echo $c; ?></h4>
+          
+          <h4 class="price"><?php echo $tp; ?></h4>
+          
+          <h4 class="card-title text-primary"><b>From </b><?php echo $std; ?></h4>
+          <h4 class="card-title text-primary"><b>to </b><?php echo $end; ?></h4>
 
-          <a href="TripInfo.php?id=<?php echo $data['Trip_Code']; ?>" class="btn ntm-danger mt-3">See more</a>
-        </div>
-         <a href="DeleteTrips.php?id=<?php echo $data['Trip_Code']; ?>" class="btn ntm-danger mt-3"><i class="btn btn-default" >Delete</i></a>
-         <a href="EditTrips.php?id=<?php echo $data['Trip_Code']; ?>" class="btn ntm-danger mt-3"><i class="btn btn-default" >Edit</i></a>
-      
+          <a href="TripInfo.php?id=<?php echo $data['Trip_Code']; ?>">See more</a>
+        <div style="text-align: center">
+      <a href="DeleteTrips.php?id=<?php echo $data['Trip_Code']; ?>" class="btn btn-secondary ">Delete</a>
+         <a href="EditTrips.php?id=<?php echo $data['Trip_Code']; ?>" class="btn btn-secondary ">Edit</a>
+     </div>
       </div>
+
     </div>
     
 
@@ -131,31 +156,19 @@ while($data = $result->fetch_array(MYSQLI_ASSOC)){
   $std=$data['Start_Date'];
   $end=$data['End_Date'];
 ?>
-    <div class="col-lg-4 col-md-6 mb-4">
+    <div class="col-lg-4 col-md-6 container mb-4">
       <div class="card h-100"> 
         <a href="#"><img src="<?php echo $t ?>" width=400px height=200px class="card-img-top" /></a>
         <div class="card-body">
           <h4 class="card-title text-primary"><b>Place: </b><?php echo $hp; ?></h4>
-          <h4 class="card-title text-primary"><b>Price: </b><?php echo $tp; ?></h4>
-          <h4 class="card-title text-primary"><b>Start date: </b><?php echo $std; ?></h4>
-          <h4 class="card-title text-primary"><b>End date: </b><?php echo $end; ?></h4>
-          <h4 class="card-title text-primary"><b>City: </b><?php echo $c; ?></h4>
+          <h4 class="card-title text-primary"><b>In </b><?php echo $c; ?></h4>
+          <h4 class="card-title text-primary"><?php echo $tp; ?></h4>
+          <h4 class="card-title text-primary"><b>From </b><?php echo $std; ?></h4>
+          <h4 class="card-title text-primary"><b>to </b><?php echo $end; ?></h4>
+          
          <a href="TripInfo.php?id=<?php echo $data['Trip_Code']; ?>" class="btn ntm-danger mt-3">See more</a>
         </div>
-        <!-- <script>
-     
-        var Cart=new Array();
-        function addarray(Trip_Code){
-           
-            Cart.push(Trip_Code);
-            alert(Cart);
-        }
-    </script> -->
-        <!-- <form >
-          <button type="submit" formaction="" id="addcart" onclick="addarray('
-          
-          ')">Add Cart</button>
-          </form> -->
+      
           <form method="post" action="Trips.php?action=add&id=<?php echo $Trip_Code; ?> ">
 
             <div class="product">
