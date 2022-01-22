@@ -25,13 +25,18 @@
         $password = "";
         $dbname = "webproject";
         $conn = new mysqli($servername, $username, $password, $dbname);
-
+        
+	    
         $receiver = $_GET['receiver'];
+        $stat= $_GET['stat']; 
         $getReceiver = "SELECT * FROM person WHERE ID_Person = '$receiver'";
         $getReceiverResult = mysqli_query($conn,$getReceiver) or die(mysqli_error($conn));
         $getReceiverRow = mysqli_fetch_array($getReceiverResult);
-    ?>
-        <img src="./images/<?=$getReceiverRow['Profile_Picture']?>" class="img-circle" width = "40"/>
+        
+        $readMessage = "UPDATE `messages` SET stat = '1' WHERE Receiver_ID = '".$_SESSION['ID_Person']."' AND  Sender_ID = '".$receiver."' OR Sender_ID = ".$_SESSION['ID_Person']." AND Receiver_ID = '$receiver'";
+        mysqli_query($conn,$readMessage) or die(mysqli_error($conn));
+   ?>
+        <img src="<?=$getReceiverRow['Profile_Picture']?>" class="img-circle" width = "40"/>
         <strong><?=$getReceiverRow['Username']?></strong>
         <table class="table table-striped">  
     <?php
@@ -58,16 +63,27 @@
 	        <input type="text" name = "message" class="form-control" placeholder = "Type your message here" required/>
 	        <input type = "submit" value='send' name='submit' class="btn btn-default">
         </form>
+        <form class="form-inline" action="" method = "POST">
+	        <input type = "submit" value='back' name='back' class="btn btn-default">
+        </form>
     <?php
         if(isset($_POST['submit'])) {
 	        $createdAt = date("Y-m-d h:i:sa");
 	        $sent_by = $_POST['sent_by'];
 	        $receiver = $_POST['received_by'];
 	        $message = $_POST['message'];
-	        $sendMessage = "INSERT INTO `messages`(`Sender_ID`, `Receiver_ID`, `Message`, `Message_Time`) VALUES('$sent_by','$receiver','$message','$createdAt')";
+	        $sendMessage = "INSERT INTO `messages`(`Sender_ID`, `Receiver_ID`, `Message`, `Message_Time`,stat) VALUES('$sent_by','$receiver','$message','$createdAt',0)";
 	        mysqli_query($conn,$sendMessage) or die(mysqli_error($conn));
+            // $readMessage2 = "UPDATE `messages` SET `stat` = '0' WHERE Receiver_ID = '".$_SESSION['ID_Person']."' AND  Sender_ID = '".$receiver."' OR Sender_ID = ".$_SESSION['ID_Person']." AND Receiver_ID = '$receiver'";
+            // mysqli_query($conn,$readMessage2) or die(mysqli_error($conn));
         }
-        include "footer.php";        
+        // if(isset($_POST['back'])) {
+        //     $readMessage2 = "UPDATE `messages` SET `stat` = '0' WHERE Receiver_ID = '".$_SESSION['ID_Person']."' AND  Sender_ID = '".$receiver."' OR Sender_ID = ".$_SESSION['ID_Person']." AND Receiver_ID = '$receiver'";
+        //     mysqli_query($conn,$readMessage2) or die(mysqli_error($conn));
+        //     // header("Location:Messages.php");
+        //     echo '<script>window.location="messages.php"</script>';
+        // }
+        // include "footer.php";        
     ?>
 </body>
 </html>

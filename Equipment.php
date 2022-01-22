@@ -24,16 +24,17 @@
   /*border lines teb2a curved*/
   /*border-radius: 10px;*/
   padding: 10px;
-  margin: 5px;
+  margin: auto;
   transition: 0.7s ease;
   text-align: center;
+
 }
  #equipcard:hover{
   /*color: white;*/
   transform: scale(0.9);
 }
 .card-body{
-  margin: 5px;
+  margin: auto;
 }
 h4{
   color: #2a718e;
@@ -103,8 +104,8 @@ while($data = $res->fetch_array(MYSQLI_ASSOC)){
 ?>
 
 <div class="col-lg-4 col-md-6 mb-4" id="fullcard">
-      <div class="card h-100"  id="equipcard"> 
-        <a href="#"><img src="<?php echo $i ?>" width=200px height=200px class="card-img-top" /></a>
+      <div class="card h-100" id="equipcard"> 
+        <a href="#"><img src="<?php echo $i ?>" width=100% class="card-img-top" /></a>
         <div class="card-body">
           <h4 class="card-title text-primary"><b>Equipment: </b><?php echo $e; ?></h4>
           <h4 class="card-title text-primary"><b>Price: </b><?php echo $ep; ?></h4>
@@ -158,6 +159,43 @@ else if($_SESSION['ID_Type'] == "2"){
 	if(!$conn){
 		die("Connection Failed<br>");
 	}
+
+
+  if (isset($_POST["add"])){
+  $sql = " SELECT * FROM equipment WHERE Item_Code='".$_GET["id"]."'";
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_array($result); 
+  if($row){
+    $Equip_Name =$row['Equipment_Name'];
+  }
+
+  if (isset($_SESSION["cart"])){
+      $item_array_id = array_column($_SESSION["cart"],"Item_Code");
+      if (!in_array($_GET["id"],$item_array_id)){
+          $count = count($_SESSION["cart"]);
+          $item_array = array(
+              'Product_Code' => $_GET["id"],
+              'ID_Person' => $_POST["ID_Person"],
+              'Product_Price' => $_POST["Item_Price"],
+              'Product_Name' => $Equip_Name,
+          );
+          $_SESSION["cart"][$count] = $item_array;
+          echo '<script>window.location="Equipment.php"</script>';
+      }else{
+          echo '<script>alert("Chosen Equipment is already Added to Cart")</script>';
+          echo '<script>window.location="Equipment.php"</script>';
+      }
+  }else{
+      $item_array = array(
+        'Product_Code' => $_GET["id"],
+        'ID_Person' => $_POST["ID_Person"],
+        'Product_Price' => $_POST["Item_Price"],
+        'Product_Name' => $Equip_Name,
+      );
+    $_SESSION["cart"][0] = $item_array;
+  }
+}
+
 	$s="SELECT * FROM equipment";
 	$res=mysqli_query($conn,$s);
 
@@ -178,20 +216,14 @@ while($data = $res->fetch_array(MYSQLI_ASSOC)){
 <a href="EquipmentInfo.php?id=<?php echo $data['Item_Code']; ?>" class="btn ntm-danger mt-3">
   More <i class="fas fa-angle-double-right"></i>
 </a>
-          <!-- <i class="fas fa-angle-double-right"></i> -->
-
 
         <div class="card-footer">
-          	<!-- <form class="form-submit" onsubmit="addtosession()" action="EquipmentInfo.php">
-                <input type="submit" value="View" name="view"><br><br>
-          </form> -->
            <form method="post" action="Equipment.php?action=add&id=<?php echo $Item_Code; ?> ">
 
             <div class="product">
               <input type="hidden" name="ID_Person" value="<?php echo $_SESSION["ID_Person"]; ?>">
               <input type="hidden" name="Item_Price" value="<?php echo $ep; ?>">
               <input type="submit" name="add"  class="btn btn-success" id="addtocartbtn" value="Add to Cart">
-                           
             </div>                
           </form>
 
