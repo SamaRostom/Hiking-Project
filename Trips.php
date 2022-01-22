@@ -16,7 +16,7 @@
         
       }
       
-.container{
+/*.container{
        padding: 0 15px;
         content: " ";
         clear: both;
@@ -27,13 +27,38 @@
         margin: auto;
         text-align: center;
         
+}*/
+#equipcard{
+  background-color: white;
+  width: 30em;
+  height: 35em;
+  /*lw 3ayza shadow fo2 aw ta7t yeb2a awel value n7otaha be ay rakham ana 3ayzah w ymen aw shemal yeb2a tany value (+ve or -ve)->for the direction talet value hya el blur w rabe3 value color of shadow*/
+  /*rgb-> red green blue, a-> for opacity of color*/
+  box-shadow: 0 5px 25px rgba(1 1 1 / 9%);
+  /*border lines teb2a curved*/
+  /*border-radius: 10px;*/
+  padding: 10px;
+  margin: auto;
+  transition: 0.7s ease;
+  text-align: center;
+}
+ #equipcard:hover{
+  /*color: white;*/
+  transform: scale(0.9);
 }
         
-
+#addtocartbtn{
+  background-color: #2a718e;
+  color: white;
+}
       
 .price {
       color: grey;
       font-size: 22px;
+}
+#addequipbtn{
+  text-align: right;
+  font-size: 20px;
 }
 
     </style>
@@ -44,12 +69,15 @@
 <?php
 include "navbar.php";
 if($_SESSION['ID_Type'] == "1"){
-
   ?>
-   <br><br><p class="buton">
-    <form method="post" action="AddTrip.php"> <input type="submit" name="addtrip"  class="btn btn-secondary" value="Add Trip"></form>
+   <br><br>
+   
+    <a href="AddTrip.php" class="btn ntm-danger mt-3" id="addequipbtn">
+         
+            <i class="fas fa-plus-square"></i> New
+          </a>
      <br><br>
-   </p>
+  
      <div class="row">
       <?php
     $servername = "localhost";
@@ -69,23 +97,25 @@ while($data = $result->fetch_array(MYSQLI_ASSOC)){
   $end=$data['End_Date'];
   $d=$data['Description_Trip'];
 ?>
-
-    <div class="col-lg-4 col-md-6 container mb-4">
-      <div class="card h-100"> 
-        <a href="#"><img src="<?php echo $t ?>" width=400px height=200px class="card-img-top" /></a>
+   <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100"  id="equipcard">
+        <a href="#"><img src="<?php echo $t ?>" width=100%  class="card-img-top" /></a>
         
           <h4 class="card-title text-primary"><b>Place: </b><?php echo $hp; ?></h4>
           <h4 class="card-title text-primary"><b>In </b><?php echo $c; ?></h4>
           
-          <h4 class="price"><?php echo $tp; ?></h4>
+          <h4 class="price"><?php echo $tp." L.E"; ?></h4>
           
           <h4 class="card-title text-primary"><b>From </b><?php echo $std; ?></h4>
           <h4 class="card-title text-primary"><b>to </b><?php echo $end; ?></h4>
 
-          <a href="TripInfo.php?id=<?php echo $data['Trip_Code']; ?>">See more</a>
+          <a href="TripInfo.php?id=<?php echo $data['Trip_Code']; ?>"class="btn ntm-danger mt-3">
+          More <i class="fas fa-angle-double-right"></i></a>
         <div style="text-align: center">
-      <a href="DeleteTrips.php?id=<?php echo $data['Trip_Code']; ?>" class="btn btn-secondary ">Delete</a>
-         <a href="EditTrips.php?id=<?php echo $data['Trip_Code']; ?>" class="btn btn-secondary ">Edit</a>
+      <a href="DeleteTrips.php?id=<?php echo $data['Trip_Code']; ?>" class="btn ntm-danger mt-3">
+            <i class="fas fa-trash-alt"></i></a>
+         <a href="EditTrips.php?id=<?php echo $data['Trip_Code']; ?>"  class="btn ntm-danger mt-3">
+          <i class="fas fa-edit"></i></a>
      </div>
       </div>
 
@@ -123,10 +153,10 @@ if($row){
       if (!in_array($_GET["id"],$item_array_id)){
           $count = count($_SESSION["cart"]);
           $item_array = array(
-              'Trip_Code' => $_GET["id"],
+              'Product_Code' => $_GET["id"],
               'ID_Person' => $_POST["ID_Person"],
-              'Trip_Price' => $_POST["Trip_Price"],
-              'Trip_Name' => $Trip_Name,
+              'Product_Price' => $_POST["Trip_Price"],
+              'Product_Name' => $Trip_Name,
           );
           $_SESSION["cart"][$count] = $item_array;
           echo '<script>window.location="Trips.php"</script>';
@@ -136,10 +166,10 @@ if($row){
       }
   }else{
       $item_array = array(
-        'Trip_Code' => $_GET["id"],
+        'Product_Code' => $_GET["id"],
         'ID_Person' => $_POST["ID_Person"],
-        'Trip_Price' => $_POST["Trip_Price"],
-        'Trip_Name' => $Trip_Name,
+        'Product_Price' => $_POST["Trip_Price"],
+        'Product_Name' => $Trip_Name,
       );
       $_SESSION["cart"][0] = $item_array;
   }
@@ -156,17 +186,19 @@ while($data = $result->fetch_array(MYSQLI_ASSOC)){
   $std=$data['Start_Date'];
   $end=$data['End_Date'];
 ?>
-    <div class="col-lg-4 col-md-6 container mb-4">
-      <div class="card h-100"> 
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100"  id="equipcard">
         <a href="#"><img src="<?php echo $t ?>" width=400px height=200px class="card-img-top" /></a>
         <div class="card-body">
           <h4 class="card-title text-primary"><b>Place: </b><?php echo $hp; ?></h4>
           <h4 class="card-title text-primary"><b>In </b><?php echo $c; ?></h4>
-          <h4 class="card-title text-primary"><?php echo $tp; ?></h4>
+          
+          <h4 class="price"><?php echo $tp. " L.E"; ?></h4>
           <h4 class="card-title text-primary"><b>From </b><?php echo $std; ?></h4>
           <h4 class="card-title text-primary"><b>to </b><?php echo $end; ?></h4>
           
-         <a href="TripInfo.php?id=<?php echo $data['Trip_Code']; ?>" class="btn ntm-danger mt-3">See more</a>
+         <a href="TripInfo.php?id=<?php echo $data['Trip_Code']; ?>"class="btn ntm-danger mt-3">
+          More <i class="fas fa-angle-double-right"></i></a>
         </div>
       
           <form method="post" action="Trips.php?action=add&id=<?php echo $Trip_Code; ?> ">
@@ -174,7 +206,7 @@ while($data = $result->fetch_array(MYSQLI_ASSOC)){
             <div class="product">
               <input type="hidden" name="ID_Person" value="<?php echo $_SESSION["ID_Person"]; ?>">
               <input type="hidden" name="Trip_Price" value="<?php echo $tp; ?>">
-              <input type="submit" name="add"  class="btn btn-success" value="Add to Cart">
+               <input type="submit" name="add"  class="btn btn-success" id="addtocartbtn" value="Add to Cart">
                            
             </div>                
           </form>
