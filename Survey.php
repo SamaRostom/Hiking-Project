@@ -11,11 +11,7 @@
  position: absolute;
  width: 1px;
 }
-.rating [type="radio"]:not(:nth-of-type(0)) + label {
- display: none;
-}
- 
- 
+  
 .rating .stars label:before {
  content: "★";
 }
