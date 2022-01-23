@@ -23,6 +23,7 @@
     
 	</style>
     <script>
+        //default image
         function setImage(){
             var img = document.querySelectorAll('.img-circle')
             for(var i=0; i<img.length;i++){
@@ -36,6 +37,14 @@
 <body onload="setImage()">
 <?php
 include "navbar.php";
+$servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "webproject";
+        $conn = new mysqli($servername, $username, $password, $dbname);
+if($_SESSION['ID_Type'] == "1" || $_SESSION['ID_Type'] == "2"){
+
+
   ?>     
   <div class='col-10 mx-auto mt-5 row'>
       <div class='px-4 col-7'>
@@ -50,23 +59,11 @@ include "navbar.php";
     <h4 class='fw-lighter'>Conversations</h4>
     <hr>
      <?php
-         $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "webproject";
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        
+        
         $lastMessage = "SELECT DISTINCT Sender_ID FROM messages WHERE Receiver_ID = ".$_SESSION['ID_Person'];
         $lastMessageResult = mysqli_query($conn,$lastMessage) or die(mysqli_error($conn));
-        
-// $lastMessage2 = "SELECT DISTINCT stat FROM messages WHERE Receiver_ID = ".$_SESSION['ID_Person'];
-// $lastMessageResult2 = mysqli_query($conn,$lastMessage2) or die(mysqli_error($conn));
-// $row2=mysqli_fetch_array($lastMessageResult2); 
-// if($row2['stat']==0){
-//     $status="unread";
-// }
-// else{
-//     $status="read";
-// }
+
 if(mysqli_num_rows($lastMessageResult) > 0) {
     while($lastMessageRow = mysqli_fetch_array($lastMessageResult)) {
         $sent_by = $lastMessageRow['Sender_ID'];
@@ -129,16 +126,53 @@ $(document).ready(function(){
     });
     
     // Set search input value on click of result item
-    $(document).on("click", ".result p", function(){
-        $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
-        $(this).parent(".result").empty();
-    });
+    // $(document).on("click", ".result p", function(){
+    //     $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+    //     $(this).parent(".result").empty();
+    // });
 });
 </script>
 </div> </div> 
-		<?php
+	<?php
+    }
+    if($_SESSION['ID_Type'] == "3"){
+        ?>
+    <div id="message">
+  <table class="table table-hover table-striped table-bordered">  
+        <thead>
+            <tr>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Conversation</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+       
 
-include "footer.php";        
+        $sql="SELECT * FROM messages";
+        $result=mysqli_query($conn,$sql);
+        while($data = $result->fetch_array(MYSQLI_ASSOC)){
+        $si = $data['Sender_ID'];
+        $ri= $data['Receiver_ID'];
+        $mess= $data['Message'];
+    ?>
+    <tr>
+    <td><?php echo $si; ?></td>
+    <td><?php echo $ri; ?></td>
+    <td><?php echo $mess; ?></td>
+    </tr>
+<?php
+}
+?>
+    
+</tbody>
+</table>
+</div>
+<?php
+
+    }
+// include "footer.php";
 ?>
 </body>
 </html>
