@@ -5,44 +5,26 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-
-
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 	<style>
-        img{
-            
+        img{        
             float: left;
         }
         body{
 
          background-image: url("images/w.jpg");
          background-size: 100% 100%;
-         background-repeat: no-repeat;   
+         background-repeat: no-repeat; 
         }
 
         /* css in case of a short page */
-        @media (min-width: 995px) {
-        body{
-            height:100vh
-        }
         .footer{
             position: absolute;
             bottom:0;
         }
-    }
+    
 
  
     </style>
-     <script>
-        var Cart;
-        function addarray(){
-            //alert("hi");
-            //Cart.push(Trip_Code);
-        }
-    </script>
    
 </head>
 <body>
@@ -58,7 +40,8 @@ if($_SESSION['ID_Type'] == "1"){
     $conn = new mysqli($servername, $username, $password, $dbname);
 	$Trip_Code = $_GET['id'];
     $s = " SELECT * FROM trips WHERE Trip_Code='".$Trip_Code."'";
-    $ss= " SELECT * FROM ratingtrip WHERE Trip_Code='".$Trip_Code."'";
+    $ss= " SELECT Trip_Code, AVG(rating) from ratingtrip WHERE Trip_Code='".$Trip_Code."'";
+    //$ss= " SELECT Trip_Code, AVG(rating) from ratingtrip group by Trip_Code";
     $result = mysqli_query ($conn ,$s);
     $rresult= mysqli_query ($conn ,$ss);
 	if($result->num_rows >0){
@@ -74,7 +57,7 @@ if($_SESSION['ID_Type'] == "1"){
 	}
     if ($rresult->num_rows >0) {
         $data=$rresult->fetch_assoc();
-        $rating=$data['rating'];
+        $rating=$data['AVG(rating)'];
     }
 	
 ?>
@@ -109,7 +92,7 @@ if($_SESSION['ID_Type'] == "1"){
     $conn = new mysqli($servername, $username, $password, $dbname);
     $Trip_Code = $_GET['id'];
      $s = " SELECT * FROM trips WHERE Trip_Code='".$Trip_Code."'";
-    $ss= " SELECT * FROM ratingtrip WHERE Trip_Code='".$Trip_Code."'";
+    $ss= " SELECT Trip_Code, AVG(rating) from ratingtrip WHERE Trip_Code='".$Trip_Code."'";
     $result = mysqli_query ($conn ,$s);
     $rresult= mysqli_query ($conn ,$ss);
     if($result->num_rows >0){
@@ -125,7 +108,7 @@ if($_SESSION['ID_Type'] == "1"){
     }
     if ($rresult->num_rows >0) {
         $data=$rresult->fetch_assoc();
-        $rating=$data['rating'];
+        $rating=intval($data['AVG(rating)']);
     }
  
 ?>
@@ -142,9 +125,6 @@ if($_SESSION['ID_Type'] == "1"){
     <?php echo "Description: ".$Description_Trip ?><br>
     <?php echo "Rating: ".$rating ?><br>
     </p>
-          <!-- <form action="TripInfo.php">
-          <button  type="submit" onclick="addarray()">Add Cart</button>
-          </form> -->
         
 <?php
 }
