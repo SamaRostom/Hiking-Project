@@ -169,17 +169,17 @@ else if($_SESSION['ID_Type'] == "2"){
     $Equip_Name =$row['Equipment_Name'];
   }
 
-  if (isset($_SESSION["cart"])){
-      $item_array_id = array_column($_SESSION["cart"],"Item_Code");
+  if (isset($_SESSION["e"])){
+      $item_array_id = array_column($_SESSION["e"],"Item_Code");
       if (!in_array($_GET["id"],$item_array_id)){
-          $count = count($_SESSION["cart"]);
+          $count = count($_SESSION["e"]);
           $item_array = array(
-              'Product_Code' => $_GET["id"],
+              'Item_Code' => $_GET["id"],
               'ID_Person' => $_POST["ID_Person"],
-              'Product_Price' => $_POST["Item_Price"],
-              'Product_Name' => $Equip_Name,
+              'Item_Price' => $_POST["Item_Price"],
+              'Item_Name' => $Equip_Name,
           );
-          $_SESSION["cart"][$count] = $item_array;
+          $_SESSION["e"][$count] = $item_array;
           echo '<script>window.location="Equipment.php"</script>';
       }else{
           echo '<script>alert("Chosen Equipment is already Added to Cart")</script>';
@@ -187,12 +187,12 @@ else if($_SESSION['ID_Type'] == "2"){
       }
   }else{
       $item_array = array(
-        'Product_Code' => $_GET["id"],
+        'Item_Code' => $_GET["id"],
         'ID_Person' => $_POST["ID_Person"],
-        'Product_Price' => $_POST["Item_Price"],
-        'Product_Name' => $Equip_Name,
+        'Item_Price' => $_POST["Item_Price"],
+        'Item_Name' => $Equip_Name,
       );
-    $_SESSION["cart"][0] = $item_array;
+    $_SESSION["e"][0] = $item_array;
   }
 }
 
