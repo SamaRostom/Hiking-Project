@@ -2,12 +2,12 @@
 <html>
 <head>
 	<title>Messages</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>       
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <style>
 		/* css in case of a short page */
-		@media (min-width: 995px) {
 		body{
 			height:100vh
 		}
@@ -15,20 +15,40 @@
 			position: absolute;
 			bottom:0;
 		}
+        hr{
+            height: 0.7px !important;
+            color:#787878 !important;
+        }
 	}
     
 	</style>
+    <script>
+        function setImage(){
+            var img = document.querySelectorAll('.img-circle')
+            for(var i=0; i<img.length;i++){
+                if(img[i].src.endsWith('/')){
+                    img[i].src = 'images/avatar.png'
+                }
+            }
+        }
+</script>
 </head>
-<body>
+<body onload="setImage()">
 <?php
 include "navbar.php";
   ?>     
-        
-	    <div class="search-box">
-        <input type="text" placeholder="Search..." />
-        <div class="result"></div>
+  <div class='col-10 mx-auto mt-5 row'>
+      <div class='px-4 col-7'>
+        <div class="input-group mt-4 mb-3 search-box">
+        <span class="input-group-text"><i class="fas fa-search"></i></span>
+        <input type="text" class="form-control" placeholder="Search..">
     </div>
-    <h6>conversations:</h6>
+    <div id="searchresult"></div>
+    </div>
+
+    <div class='col-4 offset-1 bg-light p-3 rounded'>
+    <h4 class='fw-lighter'>Conversations</h4>
+    <hr>
      <?php
          $servername = "localhost";
         $username = "root";
@@ -67,7 +87,8 @@ if(mysqli_num_rows($lastMessageResult) > 0) {
             $status="unread";
             ?>
             <div>
-        <b><a href="./message.php?receiver=<?=$sent_by?>&stat=<?=$row2['stat']?>" style="color:black;"><img src = "<?php echo $getSenderRow['Profile_Picture']?>" class="img-circle" width = "40"/> 
+            <img src = "<?php echo $getSenderRow['Profile_Picture']?>" class="img-circle" width = "40"/> &nbsp;
+        <b><a href="./message.php?receiver=<?=$sent_by?>&stat=<?=$row2['stat']?>" style="color:black;">
         <?=$getSenderRow['Username'];?></a></b>
         </div><br>
         <?php
@@ -75,8 +96,11 @@ if(mysqli_num_rows($lastMessageResult) > 0) {
         else{
             $status="read";
             ?>
-            <em><a href="./message.php?receiver=<?=$sent_by?>&stat=<?=$row2['stat']?>" style="text-decoration:none;color:black;"><img src = "<?php echo $getSenderRow['Profile_Picture']?>" class="img-circle" width = "40"/> 
+            <div>
+            <img src = "<?php echo $getSenderRow['Profile_Picture']?>" class="img-circle" width = "40"/> &nbsp;
+            <em><a href="./message.php?receiver=<?=$sent_by?>&stat=<?=$row2['stat']?>" style="text-decoration:none;color:black;">
         <?=$getSenderRow['Username'];?></a></em>
+        </div><br>
         <?php
         }
      }
@@ -85,8 +109,6 @@ else {
     echo "No conversations yet!";
 }
      ?>
-     <h6>Searching on:</h6>
-    <div id="searchresult"></div>
     <script>
 $(document).ready(function(){
     $('.search-box input[type="text"]').on("keyup input", function(){
@@ -100,7 +122,6 @@ $(document).ready(function(){
 					   success:function(data){
 						   $("#searchresult").html(data);
 					   }
-
             });
         } else{
             $("#searchresult").empty();
@@ -114,6 +135,7 @@ $(document).ready(function(){
     });
 });
 </script>
+</div> </div> 
 		<?php
 
 include "footer.php";        
