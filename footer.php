@@ -19,7 +19,6 @@
     </div>
     <div class='links text-center'>
         <p class='my-2'><a href='aboutus.php'>About Us</a> &#9679; <a href='contactus.php'>Contact Us</a> &#9679; <a href='signup.php'>Join Us</a></p>
-        <p><a href='trips.php'>Trips</a> &#9679; <a href='equipment.php'>Equipment</a></p>
     </div>
     </div>
 </body>
