@@ -20,6 +20,39 @@
         }
        
         </style>
+        <script>
+            function validate(form,e){
+        var fail="";
+      var alertBox = document.querySelector('.alert')
+      if(form.Trip_Price.value ==""){
+            fail+="Please fill the Trip Price field\n";
+        }
+        if(form.Start_Date.value ==""){
+            fail+="Please fill the Start Date field\n";
+        }
+        if(form.End_Date.value ==""){
+            fail+="Please fill the End Date field\n";
+        }
+        if(form.Description_Trip.value ==""){
+        fail+="Please fill the Description Trip field\n";
+          }
+        if(form.City.value ==""){
+        fail+="Please fill the City field\n";
+          }
+        if(form.Hiking_Place.value ==""){
+        fail+="Please fill the Hiking Place field\n";
+          }
+        if(fail==""){
+            return true;
+        }
+        else{
+        alertBox.querySelector('span').innerText = fail
+            alertBox.style.display = 'block';
+            setTimeout(function(){alertBox.style.display = 'none';},5000)
+            e.preventDefault()
+        }
+    }
+        </script>
 </head>
 <body>
 
@@ -46,9 +79,9 @@
          }
          echo"<div class='col-10 col-md-8 col-lg-6 container p-4 my-5 mx-auto'>
         <h1 class='display-6 mb-3 text-center'><b>Edit Trips</b></h1>
-        <form action='' method='post' enctype='multipart/form-data'>
+        <form action='' method='post' enctype='multipart/form-data' onsubmit= 'validate(this,event)'>
 
-        <form action='' method='post'>
+        <form action='' method='post' >
         The Price: <input type= 'text' class='form-control' name= 'Trip_Price'  value=".$Trip_Price.">
         Start Date: <input type= 'text' class='form-control' name= 'Start_Date' value=".$Start_Date.">
         End Date: <input type= 'text' class='form-control' name= 'End_Date' value=".$End_Date.">
@@ -63,7 +96,10 @@
         </div>";
         ?>
          
-       
+       <div class="alert alert-warning" role="alert">
+    <i class="fas fa-exclamation-triangle"></i> 
+    <span></span>
+</div>
        
         <?php
         if(isset($_POST['submit'])){
