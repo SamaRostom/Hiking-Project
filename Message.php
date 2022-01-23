@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
-    	@media (min-width: 995px) {
 		    body{
 			    height:100vh
 		    }
@@ -15,7 +14,7 @@
 			    position: absolute;
 			    bottom:0;
 		    }
-	    }
+	    
         .back{
             position:absolute;
             right:1.5rem;
