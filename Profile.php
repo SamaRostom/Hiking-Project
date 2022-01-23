@@ -20,7 +20,8 @@
 	</style>
 	<script>
 		function setImage(){
-		var img = document.querySelector('img')
+		var img = document.querySelector('.imgContainer img')
+
 		if(img.src.endsWith('/')){
 			img.src = 'images/avatar.png'
 		}
@@ -70,7 +71,7 @@
 	</div>
 	
 
-	
+	<?php include('footer.php') ?>
 </body>
 
 </html>

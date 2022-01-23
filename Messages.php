@@ -16,6 +16,7 @@
 			bottom:0;
 		}
 	}
+    
 	</style>
 </head>
 <body>
@@ -27,7 +28,7 @@ include "navbar.php";
         <input type="text" placeholder="Search..." />
         <div class="result"></div>
     </div>
-    <h6>Last conversation:</h6>
+    <h6>conversations:</h6>
      <?php
          $servername = "localhost";
         $username = "root";
@@ -35,20 +36,50 @@ include "navbar.php";
         $dbname = "webproject";
         $conn = new mysqli($servername, $username, $password, $dbname);
         $lastMessage = "SELECT DISTINCT Sender_ID FROM messages WHERE Receiver_ID = ".$_SESSION['ID_Person'];
-$lastMessageResult = mysqli_query($conn,$lastMessage) or die(mysqli_error($conn));
+        $lastMessageResult = mysqli_query($conn,$lastMessage) or die(mysqli_error($conn));
+        
+// $lastMessage2 = "SELECT DISTINCT stat FROM messages WHERE Receiver_ID = ".$_SESSION['ID_Person'];
+// $lastMessageResult2 = mysqli_query($conn,$lastMessage2) or die(mysqli_error($conn));
+// $row2=mysqli_fetch_array($lastMessageResult2); 
+// if($row2['stat']==0){
+//     $status="unread";
+// }
+// else{
+//     $status="read";
+// }
 if(mysqli_num_rows($lastMessageResult) > 0) {
     while($lastMessageRow = mysqli_fetch_array($lastMessageResult)) {
         $sent_by = $lastMessageRow['Sender_ID'];
         $getSender = "SELECT * FROM person WHERE ID_Person = '$sent_by'";
         $getSenderResult = mysqli_query($conn,$getSender) or die(mysqli_error($conn));
         $getSenderRow = mysqli_fetch_array($getSenderResult);
-        ?>
-        <div>
-        <img src = "./images/<?=$getSenderRow['Profile_Picture']?>" class="img-circle" width = "40"/> 
-        <?=$getSenderRow['Username'];?>
-        <a href="./message.php?receiver=<?=$sent_by?>">Send message</a>
+        $lastMessage2 = "SELECT DISTINCT stat FROM messages WHERE Receiver_ID = '".$_SESSION['ID_Person']."' AND  Sender_ID = '".$sent_by."'";
+        $lastMessageResult2 = mysqli_query($conn,$lastMessage2) or die(mysqli_error($conn));
+        $row2=mysqli_fetch_array($lastMessageResult2);  
+        $lastMessage3 = "SELECT * FROM messages WHERE Receiver_ID = '".$_SESSION['ID_Person']."' AND  Sender_ID = '".$sent_by."' OR Sender_ID = ".$_SESSION['ID_Person']." AND Receiver_ID = '$sent_by' HAVING MAX(Message_Code)";
+        $lastMessageResult3 = mysqli_query($conn,$lastMessage3) or die(mysqli_error($conn));
+        $row3 = mysqli_fetch_array($lastMessageResult3); 
+        if($row3['stat'] == 1){
+            $readMessage2 = "UPDATE `messages` SET `stat` = '0' WHERE Receiver_ID = '".$_SESSION['ID_Person']."' AND  Sender_ID = '".$sent_by."' OR Sender_ID = ".$_SESSION['ID_Person']." AND Receiver_ID = '$sent_by'";
+            mysqli_query($conn,$readMessage2) or die(mysqli_error($conn));
+        }
+        if($row2['stat']==0){
+            $status="unread";
+            ?>
+            <div>
+        <b><a href="./message.php?receiver=<?=$sent_by?>&stat=<?=$row2['stat']?>" style="color:black;"><img src = "<?php echo $getSenderRow['Profile_Picture']?>" class="img-circle" width = "40"/> 
+        <?=$getSenderRow['Username'];?></a></b>
         </div><br>
-<?php }
+        <?php
+        }
+        else{
+            $status="read";
+            ?>
+            <em><a href="./message.php?receiver=<?=$sent_by?>&stat=<?=$row2['stat']?>" style="text-decoration:none;color:black;"><img src = "<?php echo $getSenderRow['Profile_Picture']?>" class="img-circle" width = "40"/> 
+        <?=$getSenderRow['Username'];?></a></em>
+        <?php
+        }
+     }
 } 
 else {
     echo "No conversations yet!";
