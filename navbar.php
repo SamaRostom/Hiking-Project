@@ -44,9 +44,6 @@
 		<li class="nav-item">
           <a class="nav-link history" href="history.php">History</a>
         </li>
-		<li class="nav-item">
-          <a class="nav-link equip" href="equipment.php">Equipment</a>
-        </li>
       </ul>
       <div class="d-flex">
       <a class= "message text-decoration-none me-3" href= 'Messages.php'><i class="fas fa-comment"></i>
@@ -89,7 +86,6 @@ document.querySelector('.signup').style.display = 'none'
 	document.querySelector('.cart').style.display = 'none'
   document.querySelector('.message').style.display = 'none'
   document.querySelector('.trips').style.display = 'none'
-  document.querySelector('.equipment').style.display = 'none'
 	</script>";
   }
 
@@ -98,7 +94,6 @@ document.querySelector('.signup').style.display = 'none'
   echo "<script>
 	document.querySelector('.cart').style.display = 'none'
   document.querySelector('.trips').style.display = 'none'
-  document.querySelector('.equipment').style.display = 'none'
 	</script>";
  }
 }
@@ -114,7 +109,6 @@ document.querySelector('.message').style.display = 'none'
 document.querySelector('.history').style.display = 'none'
 document.querySelector('.survey').style.display = 'none'
 document.querySelector('.trips').style.display = 'none'
-document.querySelector('.equipment').style.display = 'none'
 </script>";
 }
 ?>
