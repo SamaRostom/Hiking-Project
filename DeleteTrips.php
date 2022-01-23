@@ -4,7 +4,6 @@
   <title>Delete Admin</title>
 </head>
 <body>
-	
   <?php
 $servername = "localhost";
 $username = "root";
