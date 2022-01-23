@@ -24,9 +24,18 @@
 function validate(form,e){
     	var fail="";
       var alertBox = document.querySelector('.alert')
-    	if(form.Email.value =="" || form.Password.value ==""){
-    		fail="Please fill the empty fields";
+      if(form.Username.value ==""){
+    		fail+="Please fill the Username field\n";
     	}
+    	if(form.Email.value ==""){
+    		fail+="Please fill the email field\n";
+    	}
+    	if(form.Password.value ==""){
+    		fail+="Please fill the password field\n";
+    	}
+      if(form.Password.value.length<6){
+        fail+="The password must be 6-25 character\n";
+		  }
     	if(fail==""){
     		return true;
     	}
@@ -36,6 +45,9 @@ function validate(form,e){
             setTimeout(function(){alertBox.style.display = 'none';},5000)
             e.preventDefault()
     	}
+      // if(filter_var(form.Password.value, FILTER_VALIDATE_REGEXP,array( "options"=> array( "regexp" => "/.{6,25}/")))=== false){
+      //   fail+="The password must be 6-25 character\n";
+		  // }
     }
   </script>
 </head>
@@ -116,7 +128,11 @@ function validate(form,e){
 
     <input type="number" class="form-control d-sm-inline mb-3" placeholder="Personal number" name="Phone Number"> 
     <input type="number" class="form-control d-sm-inline mb-3" placeholder="Emergency number" name="Emergency Number"> 
-
+    
+    <div class="alert alert-warning" role="alert">
+    <i class="fas fa-exclamation-triangle"></i> 
+    <span></span>
+</div>
 
     <div class='mt-4 text-center'>
     <input type="submit" class='btn btn-primary px-5 mb-3' value="Sign Up" name="Submit">
@@ -124,10 +140,7 @@ function validate(form,e){
    <p>Already have an account? <a class='linkClick' href="Login.php"> Login </a></p>
   </div>
 </form> 
-<div class="alert alert-warning" role="alert">
-    <i class="fas fa-exclamation-triangle"></i> 
-    <span></span>
-</div>
+
 </div>
 <?php include('footer.php') ?>
 </body>
