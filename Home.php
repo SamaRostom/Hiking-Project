@@ -6,8 +6,8 @@ include "navbar.php";
 <head>
   <title>REI</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="icon" type="image/png" href="icon.png">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel='icon' type="image/x-icon" href='images/logo.ico'>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
  <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
@@ -23,18 +23,17 @@ include "navbar.php";
 @import url('https://fonts.googleapis.com/css2?family=Overlock&family=Waterfall&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Overlock&family=Staatliches&family=Waterfall&display=swap');
-<meta name="viewport" content="width=device-width, initial-scale=1">
-* {
+
+body{
 	box-sizing: border-box;
 	scroll-behavior: smooth;
 }
 section{
 	padding: 100px 200px;
-	/*flex-wrap: wrap;*/
 }
 .main{
 	width: 100%;
-	min-height: 90vh;
+	height: 90vh;
 	display: flex;
 	align-items: center;
 	background: url(images/Autumn.jpg) no-repeat;
@@ -55,27 +54,7 @@ section{
 	font-weight: 300;
 	font-family: 'Patua One', cursive;
 }
-#link{
-	color: white;
-	background-color: #FF5C5C;
-	border: none;
-	
-	text-decoration: none;
-	font-size: 1.1em;
-	font-weight: 600;
-	display: inline-block;
-	padding: 0.9375em 2.1875em ;
-	letter-spacing: 1px;
-	border-radius: 15px;
-	margin-bottom: 40px;
-	transition: 0.6s ease; 
-}
 
-#link:hover{
-	color: white;
-	background-color: #FF2E2E;
-	transform: scale(1.1);
-}
 #social-icons a{
 	color: white;
 	font-size: 3em;
@@ -84,7 +63,6 @@ section{
 
 .cards h3{
 	width: 100%;
-	/*min-height: 90vh;*/
 	display: flex;
 	font-family: 'Courgette', cursive;
 	font-size: 35px;
@@ -92,7 +70,6 @@ section{
 }
 .title{
 	width: 100%;
-	/*min-height: 90vh;*/
 	display: flex;
 	font-size: 35px;
 	justify-content: center;
@@ -100,16 +77,12 @@ section{
 }
 .content{
 	display: flex;
-	/*text-align: center;*/
 	justify-content: center;
 	flex-direction: row;
-	/* flex-wrap: 3shan lma a3mel resize lel page teb2a mazbota matefdalsh tesghar m3aya tol ma basaghar el page*/
-	/*flex-wrap: wrap;*/
 }
 .card{
 	background-color: white;
 	/*from em to px (value*16)*/
-	/*width: 800px;*/
 	width: 21.25em;
 	/*lw 3ayza shadow fo2 aw ta7t yeb2a awel value n7otaha be ay rakham ana 3ayzah w ymen aw shemal yeb2a tany value (+ve or -ve)->for the direction talet value hya el blur w rabe3 value color of shadow*/
 	/*rgb-> red green blue, a-> for opacity of color*/
@@ -121,7 +94,8 @@ section{
 	margin->by3mel el mesa7a ben el elements w ba3daha*/
 	padding: 25px;
 	margin: 15px;
-	transition: 0.6s ease;
+	
+	transition: 0.6s;
 }
 .card:hover{
 	color: white;
@@ -145,19 +119,10 @@ section{
 	font-weight: 700;*/
 	margin: 10px;
 }
-/*lma ykon el screen size from 0-to-1023px ytaba2 ely gwa da*/
-/*@media (max-width: 1023px){}*/
 
-#columnvideo video{*/
-	/*background: url(images/03.jpg) no-repeat;*/
-	float: right;
-	/*width: 100%;*/
+#columnvideo video{
+	float: left;
 }
-
-
-/*section.part3{
-	padding: 100px 200px;
-	/*flex-wrap: wrap;*/
 
 #columntext h3{
 	color: black;
@@ -176,17 +141,12 @@ section{
 
 </head>
 <body>
-<?php
-// session_start();
- // include "Menu.php"; 
-?>
 
 <section class="main">
 <div>
 	<center>
 	<h2>THE MOUNTAINS</h2>
 	<h3>ARE CALLING..AND I MUST GO</h3>
-<!-- <a href="Login.php" id="link">Login</a> -->
 <div class="social-icons" id="social-icons">
 	<a href="#github"><i class="fab fa-github"></i></a>
 	<a href="#instagram"><i class="fab fa-instagram"></i></a>
@@ -202,14 +162,8 @@ section{
   <div id="columnvideo">
 
   <video width="520" height="440" autoplay muted="1">
-  <!-- <source src="images/Egypt.mp4"> -->
   	<source src="images/Egypt.mp4">
   </video>
-  <!-- <video src="image/Egypt.mp4" autoplay="true" loop="true"></video>
- -->
-<!-- <iframe width="420" height="315"
-src="https://www.youtube.com/watch?v=BapSQFJPMM0?autoplay=1&mute=1&loop=1">
-</iframe> -->
 
   </div>
   <div id="columntext">
