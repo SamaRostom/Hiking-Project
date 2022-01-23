@@ -43,6 +43,40 @@ position: absolute;
   }
 
 }
+function validate(form,e){
+        var fail="";
+      var alertBox = document.querySelector('.alert')
+      if(form.Username.value ==""){
+            fail+="Please fill the Username field\n";
+        }
+        if(form.Email.value ==""){
+            fail+="Please fill the Email field\n";
+        }
+        if(form.Password.value ==""){
+    		fail+="Please fill the password field\n";
+    	}
+        if(form.City.value ==""){
+        fail+="Please fill the City field\n";
+          }
+        if(form.Gender.value ==""){
+        fail+="Please fill the Gender field\n";
+          }
+        if(form.Phone_Number.value ==""){
+        fail+="Please fill the Phone_Number field\n";
+          }
+          if(form.Emergency_Number.value ==""){
+        fail+="Please fill the Emergency_Number field\n";
+          }
+        if(fail==""){
+            return true;
+        }
+        else{
+        alertBox.querySelector('span').innerText = fail
+            alertBox.style.display = 'block';
+            setTimeout(function(){alertBox.style.display = 'none';},5000)
+            e.preventDefault()
+        }
+    }
 </script>
 <body>
 
@@ -58,7 +92,7 @@ position: absolute;
 
 		echo"<div class='col-10 col-md-8 col-lg-6 container p-4 my-5 mx-auto'>
 		<h1 class='display-6 mb-3 text-center'>Edit your Profile</h1>
-	    <form action='' method='post' enctype='multipart/form-data'>
+	    <form action='' method='post' enctype='multipart/form-data' onsubmit='validate(this,event)'>
 		Username: <input type= 'text' class='form-control' name= 'Username'  value=".$_SESSION['Username'].">
 		Email: <input type= 'text'  class='form-control' name= 'Email' value=".$_SESSION['Email'].">
 		Password: <input type= 'password' class= 'form-control' name='Password' value=".$_SESSION['Password'].">
@@ -103,6 +137,10 @@ position: absolute;
 		}
 	}	
 	?>
+	   <div class="alert alert-warning" role="alert">
+    <i class="fas fa-exclamation-triangle"></i> 
+    <span></span>
+</div>
 </body>
 <?php include('footer.php') ?>
 
