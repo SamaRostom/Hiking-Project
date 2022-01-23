@@ -129,6 +129,10 @@ $conn->close();
 
   else if ($_SESSION['ID_Type'] == "2") {
   ?>
+  <!-- <form class="form-inline" method = "POST" action = "">
+	  <input type="text" name = "name" placeholder="Search" class="form-control">
+	  <input type="submit" value='Search' name='search' class="btn btn-default">
+  </form> -->
   <br><br>
      <div class="row">
       <?php
