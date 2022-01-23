@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <script> src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script src="./index.js"></script>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <title>Contact US</title>
    <style type="text/css">
@@ -19,7 +14,6 @@ body{
     #equipcard{
       background-image: url("images/c.jpg");
   width: 60%;
-  /* height: 15em; */
   box-shadow: 0 5px 25px rgba(1 1 5 / 9%);
   padding: 5px;
   margin: 3rem auto;
@@ -27,7 +21,6 @@ body{
   text-align: center;
 }
  #equipcard:hover{
-  /*color: white;*/
   transform: scale(0.9);
 }
 .networks a{
@@ -48,7 +41,7 @@ body{
      include "navbar.php";
   ?>
   
-   <div class="card h-50"  id="equipcard">
+   <div class="card"  id="equipcard">
       <br><br>
       <h3> <b>CONTACT US:</b></h3><br>
    <b><i style='font-size:24px' class='fas'>&#xf095;</i>  Our Phone number : 01113529156</b>
