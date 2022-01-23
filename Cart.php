@@ -92,21 +92,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
                         $total = $total +  $value["Trip_Price"];
                         // $_SESSION['Total_Price']=$total;
                     }
-                    foreach ($_SESSION["e"] as $key => $v) {
-                        
-                        ?>
-                        <tr>          
-                            <td><?php echo $v["Item_Code"]; ?></td>
-                            <td><?php echo $v["Item_Name"]; ?></td>
-                            <td><?php echo $v["Item_Price"]; ?> L.E </td>
-                            <td><a class="text-decoration-none" href="Cart.php?actioni=delete&id=<?php echo $v["Item_Code"]; ?>"><span
-                                        class="text-danger">Remove Trip</span></a></td>            
-                        </tr>  
-
-                        <?php
-                        $total = $total +  $v["Item_Price"];
-                        // $_SESSION['Total_Price']=$total;
-                    }
+                    
                     $_SESSION['Total_Price']=$total;
                     ?>
                         <tr>
