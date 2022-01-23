@@ -5,7 +5,7 @@ $password = "";
 $dbname = "webproject";
 $conn = new mysqli($servername, $username, $password, $dbname);
 session_start();
-// https://www.tutorialrepublic.com/php-tutorial/php-mysql-ajax-live-search.php
+
 echo "<script>
 var img = document.querySelectorAll('.img-circle')
 for(var i=0; i<img.length;i++){
@@ -41,7 +41,6 @@ if(isset($_POST["term"])){
             
             // Check number of rows in the result set
             if(mysqli_num_rows($result) > 0){
-                // Fetch result rows as an associative array
                 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
                     ?>
             <div class='bg-light user mb-3 rounded p-3'>
