@@ -28,6 +28,7 @@
         $dbname = "webproject";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
+        
     ?>
     <div class='m-5'>
     <ul class="nav nav-tabs" id="myTab">
@@ -93,13 +94,13 @@
     <img src='images/hiking2.jpg' class='p-0 col-5'>
     <div class='col-5 m-5'>
             <?php
-              //   $TotalRevenue;
-              //   // $sq = "SELECT * FROM `order`" ;
-              //   $sql = "SELECT TOP 5  Trip_Code  
-              //   FROM order";
-              //   $r = mysqli_query ($conn ,$sq);
-              //   while($data2 = $r->fetch_array(MYSQLI_ASSOC)){
-              //     $TotalRevenue=$data2;
+                 // $TotalCount;
+                // // $sq = "SELECT * FROM `order`" ;
+                // $sq = "SELECT COUNT(Trip_Code) AS TripCount, Trip_Code FROM order GROUP BY Trip_Code ORDER BY TripCount DESC LIMIT 1";
+                // $r = mysqli_query ($conn ,$sq);
+                // $data2 =  mysqli_fetch_assoc($r);
+                // while($data2 = $r->fetch_array(MYSQLI_ASSOC)){
+                  // $TotalCount=$data2['TripCount'];
               //  }
             ?>
     <h1 class='fs-3'>Trip name</h1>
@@ -259,7 +260,7 @@
 </div>
 <?php
 
-  if($_SESSION['ID_Type'] == "3" || $_SESSION['ID_Type'] == "4"){ //Auditor
+  if($_SESSION['ID_Type'] == "3" || $_SESSION['ID_Type'] == "4"){ //Auditor HR
 	echo "<script>
 	document.querySelector('.hikers').style.display = 'none'
 	document.querySelector('.orders').style.display = 'none'
