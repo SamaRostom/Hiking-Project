@@ -87,11 +87,24 @@ else{
         $ID_Person = $value["ID_Person"];
         $sql = "INSERT INTO `order`(`ID_Person`, `Trip_Code`, `Order_Date`, `Total_Price`) VALUES ('$ID_Person','$Trip_Code','$currentDateTime','$Total_Price')";
         $r2=mysqli_query($conn,$sql);
-    }  
+    }
+    try{
+		if($conn->query($sql) === FALSE )
+		throw new Exception("Error: " . $sql . "<br>" . $conn->error);
+	}
+	catch(Exception $e)
+	{
+		echo "Message :",$e->getMessage();
+		$myfile = fopen("error.txt", 'a') or die("Unable to open file!");
+		$txt = "Error: " . $sql . "<br>" . $conn->error;
+		fwrite($myfile, $txt);
+		fclose($myfile);
+	}  
     if ($r2) {
         $last_id = mysqli_insert_id($conn);  
         $_SESSION['last_id']=$last_id;
-    } 
+    }
+    
 }
 ?>
 </body>
