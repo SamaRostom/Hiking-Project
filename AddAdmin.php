@@ -27,9 +27,18 @@
   function validate(form,e){
     	var fail="";
       var alertBox = document.querySelector('.alert')
-    	if(form.Email.value =="" || form.Password.value ==""){
-    		fail="Please fill the empty fields";
+      if(form.Username.value ==""){
+    		fail+="Please fill the Username field\n";
     	}
+    	if(form.Email.value ==""){
+    		fail+="Please fill the email field\n";
+    	}
+    	if(form.Password.value ==""){
+    		fail+="Please fill the password field\n";
+    	}
+      if(form.Password.value.length<6){
+        fail+="The password must be 6-25 character\n";
+		  }
     	if(fail==""){
     		return true;
     	}
@@ -39,7 +48,7 @@
             setTimeout(function(){alertBox.style.display = 'none';},5000)
             e.preventDefault()
     	}
-  }
+    }
 </script>
 </head>
 <body>
@@ -50,7 +59,7 @@ $password = "";
 $dbname = "webproject";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-if(isset($_POST['Add_Admin'])){
+if(isset($_POST['Submit'])){
 
    $sql="INSERT INTO person(Username,Email,Password,ID_Type,City,Gender,Phone_Number, Emergency_Number) VALUES ('".$_POST['Username']."','".$_POST["Email"]."','".$_POST["Password"]."','"."1"."','".$_POST["City"]."','".$_POST["Gender"]."','".$_POST["Phone_Number"]."','".$_POST["Emergency_Number"]."')";
 
@@ -103,11 +112,16 @@ if(isset($_POST['Add_Admin'])){
     <p class='mt-3 mb-2'>Insert contact info:</p>
     <input type="number" class="form-control d-sm-inline mb-3" placeholder="Personal number" name="Phone Number"> 
     <input type="number" class="form-control d-sm-inline mb-3" placeholder="Emergency number" name="Emergency Number"> 
-   <div class='mt-4 text-center'>
+    
+    <div class="alert alert-warning" role="alert">
+    <i class="fas fa-exclamation-triangle"></i> 
+    <span></span>
+</div>
+    <div class='mt-4 text-center'>
     <input type="submit" class='btn btn-primary px-5 mb-3' value="Add" name="Submit">
    <input type="reset" class='btn btn-outline-dark px-5 ms-2 mb-3'>
   </div>
-
+   
 </form>
 </body>
 </html>
