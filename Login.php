@@ -18,23 +18,41 @@
 	}
 	</style>
 	<script>
-		function validate(form){
-			console.log(form)
-			console.log(form.Email)
-    	fail="";
-    	if(form.Email.value ==""){
+	// 	function validate(form){
+	// 		console.log(form)
+	// 		console.log(form.Email)
+    // 	fail="";
+    // 	if(form.Email.value ==""){
+    // 		fail+="Please fill the email field\n";
+    // 	}
+    // 	if(form.Password.value ==""){
+    // 		fail+="Please fill the password field\n";
+    // 	}
+    // 	if(fail==""){
+    // 		return true;
+    // 	}
+    // 	else{
+    // 		alert(fail);
+    // 		return false;
+    // 	}
+    // }
+	function validate(form,e){
+    	var fail="";
+      var alertBox = document.querySelector('.alert')
+    		if(form.Email.value ==""){
     		fail+="Please fill the email field\n";
     	}
     	if(form.Password.value ==""){
     		fail+="Please fill the password field\n";
     	}
- 
     	if(fail==""){
     		return true;
     	}
     	else{
-    		alert(fail);
-    		return false;
+        alertBox.querySelector('span').innerText = fail
+    		alertBox.style.display = 'block';
+            setTimeout(function(){alertBox.style.display = 'none';},5000)
+            e.preventDefault()
     	}
     }
 	function ShowPassword() {
@@ -86,7 +104,7 @@ if(isset($_POST['Submit'])){
 <div class='col-10 col-md-7 col-lg-6 col-xl-5 m-auto form-container px-5 py-4 my-5'>
         <h1 class='display-6 text-center'>Log in</h1>
 		<p class='text-center'>Dive in adventures with us</p>
-<form method="POST" action="" onsubmit="validate(this)">
+<form method="POST" action="" onsubmit="validate(this,event)">
     <div class="input-group mb-3">
         <span class="input-group-text"><i class="fas fa-at"></i></span>
         <input type="email" class="form-control" placeholder="Insert your email" name="Email">
@@ -96,6 +114,10 @@ if(isset($_POST['Submit'])){
         <input type="password" class="form-control" placeholder="Insert your password" name="Password">
         <div class='position-absolute showBtn' onclick="ShowPassword()"><i class='far fa-eye'></i></div>
     </div>
+	<div class="alert alert-warning" role="alert">
+    <i class="fas fa-exclamation-triangle"></i> 
+    <span></span>
+</div>
 	<div class='mt-4 text-center'>
     <input type="submit" class='btn btn-primary px-5 mb-3' value="Log in" name="Submit">
    <input type="reset" class='btn btn-outline-dark px-5 ms-2 mb-3'>
